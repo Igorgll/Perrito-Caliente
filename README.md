@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="./assets/PerritoCalienteLogo.jpg" />
+<img src="./assets/PerritoCalienteLogo.png.jpg" />
 </h1>
 
 <h1 align="center">
