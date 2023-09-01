@@ -1,6 +1,6 @@
-<h1 align="center">
-<img src="./assets/PerritoCalienteLogo.png.jpg" />
-</h1>
+<p align="center">
+<img src="./assets/perritoca.png" width="40%" />
+</p>
 
 <h1 align="center">
    🐶 Perrito Caliente 🔥
