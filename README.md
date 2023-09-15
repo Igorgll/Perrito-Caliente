@@ -25,3 +25,10 @@
 - [] Adicionar vídeo do youtube da receita
 - [] Criar conta
 - [] Fazer Login
+
+### Diagrama Banco de Dados
+
+<p align='center'>
+   <img src="https://imgur.com/ToxLMbP.jpg" width="100%" />
+
+</p>
