@@ -1,6 +1,6 @@
-<h1 align="center">
-<img src="./assets/PerritoCalienteLogo.jpg" />
-</h1>
+<p align="center">
+<img src="./assets/perritoca.png" width="40%" />
+</p>
 
 <h1 align="center">
    🐶 Perrito Caliente 🔥
@@ -25,3 +25,10 @@
 - [] Adicionar vídeo do youtube da receita
 - [] Criar conta
 - [] Fazer Login
+
+### Diagrama Banco de Dados
+
+<p align='center'>
+   <img src="https://imgur.com/ToxLMbP.jpg" width="100%" />
+
+</p>
