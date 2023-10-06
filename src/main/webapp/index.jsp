@@ -1,10 +1,10 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<form action="/create-account" method="post">
+<form action="/create-recipe" method="post">
 
-    <label>Seu nome</label>
-    <input type="text" name="name" id="=name">
+    <label>Nome da Receita</label>
+    <input type="text" name="receita" id="=receita">
 
     <button type="submit">Register</button>
 
