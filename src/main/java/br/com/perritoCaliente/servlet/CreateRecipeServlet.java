@@ -23,6 +23,6 @@ public class CreateRecipeServlet extends HttpServlet {
 
         System.out.println(nomeReceita);
 
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        resp.sendRedirect("/find-all-recipes");
     }
 }
