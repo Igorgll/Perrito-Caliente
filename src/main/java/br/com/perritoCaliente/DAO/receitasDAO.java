@@ -38,7 +38,7 @@ public class receitasDAO {
 
     }
 
-    public List<Receita> findAllCars() {
+    public List<Receita> exibirTodasReceitas() {
 
 
         try {
@@ -56,8 +56,9 @@ public class receitasDAO {
             while (resultSet.next()) {
 
                 String nomeReceita = resultSet.getString("Titulo");
+                int idreceita = resultSet.getInt("IDRECEITA");
 
-                Receita receita = new Receita(nomeReceita);
+                Receita receita = new Receita(nomeReceita, idreceita);
 
                 receitas.add(receita);
 
