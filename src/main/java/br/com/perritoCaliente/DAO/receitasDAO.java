@@ -14,7 +14,7 @@ import static br.com.perritoCaliente.DAO.sqlQueries.Queries.*;
 
 public class receitasDAO {
 
-    public void criarReceita(Receita receita) {
+    public static void criarReceita(Receita receita) {
 
         //String SQL = "";
 
@@ -79,5 +79,62 @@ public class receitasDAO {
         }
 
     }
+
+    public void deletarReceitaPorid(int idReceita) {
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA);
+            preparedStatement.setInt(1, idReceita);
+            preparedStatement.execute();
+
+            System.out.println("success on delete receita with id: " + idReceita);
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection");
+
+        }
+    }
+
+    public static void atualizarReceita(Receita receita){
+
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa","sa");
+
+            System.out.println("success in database connection");
+
+            PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA);
+
+            preparedStatement.setString(1, receita.getNomeReceita());
+
+            preparedStatement.setInt(2, receita.getIdReceita());
+
+            preparedStatement.execute();
+
+            System.out.println("success in update recipe");
+
+            connection.close();
+
+        } catch (Exception e) {
+
+            System.out.println("fail in database connection");
+            System.out.println("Error: " + e.getMessage());
+
+        }
+
+
+
+    }
+
+
+
+
 
 }

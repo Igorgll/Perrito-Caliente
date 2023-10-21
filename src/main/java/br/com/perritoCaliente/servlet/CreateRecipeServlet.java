@@ -15,14 +15,36 @@ public class CreateRecipeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp);
-        String nomeReceita = req.getParameter("receita");
 
-        Receita f = new Receita(nomeReceita);
+        String idReceitas = req.getParameter("idReceita");
+
+        int idReceitasint = Integer.parseInt(idReceitas);
+
+
+        String Receitas = req.getParameter("nomeReceita");
+
+        Receita f = new Receita(Receitas, idReceitasint);
+
         receitasDAO v = new receitasDAO();
+
         v.criarReceita(f);
 
-        System.out.println(nomeReceita);
+        System.out.println(Receitas);
+
+        if (idReceitas.isBlank()) {
+
+            receitasDAO.criarReceita(f);
+
+        } else {
+
+            receitasDAO.atualizarReceita(f);
+        }
+
 
         resp.sendRedirect("/find-all-recipes");
+
     }
 }
+
+
+
