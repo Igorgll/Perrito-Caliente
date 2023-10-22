@@ -10,7 +10,7 @@ nav {
 }
 
 .logo img {
-    width: 60%;
+  width: 60%;
 }
 
 .nav-list {
@@ -23,6 +23,15 @@ nav {
   gap: 4rem;
 }
 
+.nav-list li {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-list li:hover {
+  opacity: 80%;
+}
+
 .nav-buttons {
   margin-left: auto;
   display: flex;
@@ -30,21 +39,29 @@ nav {
 }
 
 .nav-buttons :nth-child(1) {
-    width: 150px;
-    height: 46px;
-    background: transparent;
-    color: var(--orange);
-    border: 2px solid var(--orange);
-    border-radius: 6px;
-    font-size: 18px;
+  width: 150px;
+  height: 46px;
+  background: transparent;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  border-radius: 6px;
+  font-size: 18px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.nav-buttons :nth-child(1):hover {
+  background: var(--orange);
+  color: var(--light);
 }
 
 .nav-buttons :nth-child(2) {
-    width: 150px;
-    height: 46px;
-    font-size: 18px;
-    border-radius: 6px;
-    border: none;
-    background: var(--orange);
-    color: var(--light);
+  width: 150px;
+  height: 46px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: none;
+  background: var(--orange);
+  color: var(--light);
+  cursor: pointer;
 }
