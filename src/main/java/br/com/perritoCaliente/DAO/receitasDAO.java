@@ -40,8 +40,8 @@ public class receitasDAO {
             List<Receita> recipes = new ArrayList<>();
 
             while (resultSet.next()) {
-                String recipeName = resultSet.getString("nome_receita");
-                int recipeId = resultSet.getInt("id");
+                String recipeName = resultSet.getString("titulo");
+                int recipeId = resultSet.getInt("idReceita");
 
                 Receita receita = new Receita(recipeName, recipeId);
                 recipes.add(receita);
