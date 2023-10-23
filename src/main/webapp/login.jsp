@@ -33,16 +33,10 @@
         </div>
       </nav>
 
-      <main>
+      <main style="height: 100%">
         <form action="seu_script_de_processamento" method="post">
-          <h2>Cadastro</h2>
-          <span>Possui conta? <a href="#">Login</a></span>
-
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <h2>Entrar</h2>
+          <span>Não possui uma conta? <a href="#">Cadastre-se</a></span>
 
           <label for="usuario">Usuário:</label>
           <input type="text" id="usuario" name="usuario" required />
@@ -50,15 +44,7 @@
           <label for="senha">Senha:</label>
           <input type="password" id="senha" name="senha" required />
 
-          <label for="confirmar-senha">Confirmar Senha:</label>
-          <input
-            type="password"
-            id="confirmar-senha"
-            name="confirmar-senha"
-            required
-          />
-
-          <button type="submit">Cadastrar</button>
+          <button type="submit">Entrar</button>
         </form>
       </main>
       <footer>
@@ -72,12 +58,5 @@
         </div>
       </footer>
     </div>
-
-    <!-- <form action="/create-recipe" method="post">
-      <label>Nome da Receita</label>
-      <input type="text" name="recipe-name" id="recipe-name" />
-      <input type="hidden" id="id" name="id" value="0" />
-      <button type="submit">Registrar</button>
-    </form> -->
   </body>
 </html>
