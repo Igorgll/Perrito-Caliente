@@ -32,8 +32,8 @@ public class receitasDAO {
 
     public List<Receita> exibirTodasReceitas() {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
+                ResultSet resultSet = preparedStatement.executeQuery()) {
 
             System.out.println("Conexão bem-sucedida");
 
@@ -60,7 +60,7 @@ public class receitasDAO {
 
     public void deletarReceitaPorId(int idReceita) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA)) {
 
             preparedStatement.setInt(1, idReceita);
             int affectedRows = preparedStatement.executeUpdate();
@@ -79,7 +79,7 @@ public class receitasDAO {
 
     public static void atualizarReceita(Receita receita) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
 
             preparedStatement.setString(1, receita.getNomeReceita());
             preparedStatement.setInt(2, receita.getIdReceita());
