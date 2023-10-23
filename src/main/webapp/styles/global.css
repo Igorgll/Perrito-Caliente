@@ -1,9 +1,11 @@
 @import url("./navbar.css");
+@import url("./main.css");
 
 :root {
   --light: #fefefe;
   --orange: #ffa269;
   --gray: #7f8899;
+  --background-gray: #EEE; 
 }
 
 * {
