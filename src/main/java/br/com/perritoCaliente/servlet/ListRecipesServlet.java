@@ -12,18 +12,13 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/find-all-recipes")
-public class ListRecipeServlet extends HttpServlet {
-
+public class ListRecipesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Receita> receitas = new receitasDAO().findAllCars();
-
+        List<Receita> receitas = new receitasDAO().exibirTodasReceitas();
         req.setAttribute("receitas", receitas);
-
         req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
-
-        super.doGet(req, resp);
 
     }
 

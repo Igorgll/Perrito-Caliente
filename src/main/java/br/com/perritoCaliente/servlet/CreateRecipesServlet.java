@@ -10,19 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/create-recipe")
-public class CreateRecipeServlet extends HttpServlet {
+public class CreateRecipesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.doPost(req, resp);
-        String nomeReceita = req.getParameter("receita");
+        String recipeName = req.getParameter("recipe-name");
+        int recipeId = Integer.parseInt(req.getParameter("id"));
 
-        Receita f = new Receita(nomeReceita);
-        receitasDAO v = new receitasDAO();
-        v.criarReceita(f);
+        Receita receita = new Receita(recipeName, recipeId);
 
-        System.out.println(nomeReceita);
+        if (recipeId == 0) {
+            receitasDAO.criarReceita(receita);
+        } else {
+            receitasDAO.atualizarReceita(receita);
+        }
 
         resp.sendRedirect("/find-all-recipes");
     }
 }
+

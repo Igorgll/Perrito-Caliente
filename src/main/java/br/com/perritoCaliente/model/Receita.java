@@ -3,6 +3,7 @@ package br.com.perritoCaliente.model;
 import java.util.ArrayList;
 
 public class Receita {
+    int idReceita;
     private String nomeReceita;
     private ArrayList<Ingrediente> ingredientes;
     private String imagemReceita;
@@ -13,6 +14,12 @@ public class Receita {
         this.nomeReceita = nomeReceita;
     }
 
+    public Receita(String nomeReceita, int idReceita) {
+        this.nomeReceita = nomeReceita;
+        this.idReceita = idReceita;
+    }
+
+
     public Receita(String nomeReceita, ArrayList<Ingrediente> ingredientes, String imagemReceita, String tipoReceita, String videoReceita) {
         this.nomeReceita = nomeReceita;
         this.ingredientes = ingredientes;
@@ -22,6 +29,14 @@ public class Receita {
     }
 
     public Receita() {
+    }
+
+    public int getIdReceita() {
+        return idReceita;
+    }
+
+    public void setIdReceita(int idReceita) {
+        this.idReceita = idReceita;
     }
 
     public String getNomeReceita() {
