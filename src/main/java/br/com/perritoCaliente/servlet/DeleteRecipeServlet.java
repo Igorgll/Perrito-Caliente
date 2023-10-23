@@ -13,12 +13,12 @@ public class DeleteRecipeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        String idReceita = req.getParameter("idReceita");
-        int idReceitaINT = Integer.parseInt(idReceita);
+        String recipeIdString = req.getParameter("id");
+        int  recipeIdInt = Integer.parseInt(recipeIdString);
 
-        new receitasDAO().deletarReceitaPorid(idReceitaINT);
+        new receitasDAO().deletarReceitaPorId(recipeIdInt);
 
-        resp.sendRedirect("/find-all-Recipe");
+        resp.sendRedirect("/find-all-recipes");
 
     }
 
