@@ -1,9 +1,14 @@
 package br.com.perritoCaliente.model;
 
+import java.util.ArrayList;
+
 public class Usuario {
 
+
+    private int idUsuario;
     private String nome;
     private String usuario;
+    private ArrayList<Usuario> usuarios;
     private String email;
     private String senhaUsuario;
 
@@ -15,6 +20,19 @@ public class Usuario {
     }
 
     public Usuario() {
+    }
+
+    public Usuario(int idUsuario, String nome) {
+        this.idUsuario = idUsuario;
+        this.nome = nome;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNome() {
