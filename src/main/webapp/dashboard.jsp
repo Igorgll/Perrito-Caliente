@@ -14,13 +14,12 @@
             <th>Name</th>
             <th>Actions</th>
         </tr>
-        <c:forEach var="receita" items="${receitas}">
-            <tr>
-                <td>${receita.idReceita}</td>
-
-                <td>${receita.nomeReceita}</td>
-
-                <form action="/delete-recipe" method="post">
+<c:forEach var="receita" items="${receitas}">
+    <tr>
+        <td>${receita.idReceita}</td>
+        <td>${receita.nomeReceita}</td>
+        <td>
+            <form action="/delete-recipe" method="post">
 
                 <input type="hidden" id="idReceita" name="nomeReceita" value="${receita.idReceita}">
 
@@ -30,12 +29,13 @@
 
                 <a href="index.jsp?id=${receita.idReceita}&name=${receita.nomeReceita}">Atualizar Receitas</a>
 
-                </form>
+            </form>
+        </td>
+    </tr>
+</c:forEach>
 
-
-            </tr>
-        </c:forEach>
     </table>
+
   </div>
 </body>
 </html>
