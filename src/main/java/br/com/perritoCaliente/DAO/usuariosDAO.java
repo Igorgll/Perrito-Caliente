@@ -2,6 +2,7 @@ package br.com.perritoCaliente.DAO;
 
 import br.com.perritoCaliente.model.Receita;
 import br.com.perritoCaliente.model.Usuario;
+import br.com.perritoCaliente.servlet.config.ConnectionPoolConfig;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class usuariosDAO {
     private static final String PASSWORD = "sa";
 
     public static void criarUsuario(Usuario usuario) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(CRIA_USUARIO)) {
                 preparedStatement.setString(1, usuario.getNome());
                 int affectedRows = preparedStatement.executeUpdate();
@@ -32,7 +33,7 @@ public class usuariosDAO {
     }
 
     public List<Usuario> exibirTodosUsuarios() {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_USUARIOS);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
@@ -63,7 +64,7 @@ public class usuariosDAO {
     }
 
     public void deletarUsuarioPorId(int idUsuario) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_USUARIO)) {
 
             preparedStatement.setInt(1, idUsuario);
@@ -83,7 +84,7 @@ public class usuariosDAO {
 
 
     public static void atualizarUsuario(Usuario usuario) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
 
             preparedStatement.setString(1, usuario.getNome());

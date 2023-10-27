@@ -1,6 +1,7 @@
 package br.com.perritoCaliente.DAO;
 
 import br.com.perritoCaliente.model.Receita;
+import br.com.perritoCaliente.servlet.config.ConnectionPoolConfig;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class receitasDAO {
     private static final String PASSWORD = "sa";
 
     public static void criarReceita(Receita receita) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA)) {
                 preparedStatement.setString(1, receita.getNomeReceita());
                 int affectedRows = preparedStatement.executeUpdate();
@@ -31,9 +32,9 @@ public class receitasDAO {
     }
 
     public List<Receita> exibirTodasReceitas() {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
-                ResultSet resultSet = preparedStatement.executeQuery()) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
             System.out.println("Conexão bem-sucedida");
 
@@ -59,7 +60,7 @@ public class receitasDAO {
     }
 
     public void deletarReceitaPorId(int idReceita) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA)) {
 
             preparedStatement.setInt(1, idReceita);
@@ -78,7 +79,7 @@ public class receitasDAO {
     }
 
     public static void atualizarReceita(Receita receita) {
-        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
 
             preparedStatement.setString(1, receita.getNomeReceita());
