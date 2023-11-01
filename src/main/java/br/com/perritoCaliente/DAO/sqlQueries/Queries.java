@@ -7,20 +7,11 @@ public class Queries {
 
 
     // USUÁRIOS
-    public static final String CRIA_USUARIO = "INSERT INTO Usuarios (titulo) VALUES (?)";
+    public static final String CRIA_USUARIO = "INSERT INTO USUARIOS (NOME, EMAIL, USUARIO, SENHA) VALUES (?, ?, ?, ?)";
 
     public static final String LISTAR_USUARIOS = "SELECT * FROM Usuarios";
 
     public static final String DELETAR_USUARIO = "DELETE Usuario WHERE idUsuario = ?";
-
-
-
-
-
-
-
-
-
 
     public static final String DELETAR_RECEITA = "DELETE Receitas WHERE idReceita = ?";
     public static final String ATUALIZAR_RECEITA = "UPDATE Receitas SET titulo = ? WHERE idReceita = ?";

@@ -32,9 +32,8 @@
           <button>Entrar</button>
         </div>
       </nav>
-
       <main>
-        <form action="seu_script_de_processamento" method="post">
+        <form action="create-account" method="post">
           <h2>Cadastro</h2>
           <span>Possui conta? <a href="#">Login</a></span>
 
@@ -59,6 +58,12 @@
           />
 
           <button type="submit">Cadastrar</button>
+
+          <c:if test="${not empty errorMessage}">
+              <div>
+                  ${errorMessage}
+              </div>
+          </c:if>
         </form>
       </main>
       <footer>
