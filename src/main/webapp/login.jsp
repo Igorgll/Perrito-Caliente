@@ -33,7 +33,7 @@
         </div>
       </nav>
 
-      <main style="height: 100%">
+      <main style="height: 90%">
         <form action="seu_script_de_processamento" method="post">
           <h2>Entrar</h2>
           <span>Não possui uma conta? <a href="#">Cadastre-se</a></span>

@@ -20,6 +20,9 @@ public class usuariosDAO {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(CRIA_USUARIO)) {
                 preparedStatement.setString(1, usuario.getNome());
+                preparedStatement.setString(2, usuario.getUsuario());
+                preparedStatement.setString(3, usuario.getEmail());
+                preparedStatement.setString(4, usuario.getSenhaUsuario());
                 int affectedRows = preparedStatement.executeUpdate();
                 if (affectedRows > 0) {
                     System.out.println("Usuário criado com sucesso!");

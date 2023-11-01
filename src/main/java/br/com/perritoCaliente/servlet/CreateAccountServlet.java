@@ -1,5 +1,8 @@
 package br.com.perritoCaliente.servlet;
 
+import br.com.perritoCaliente.DAO.usuariosDAO;
+import br.com.perritoCaliente.model.Usuario;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +15,18 @@ public class CreateAccountServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-//        String user;
-//        String email;
-//        String password;
+        String nome = request.getParameter("nome");
+        String email = request.getParameter("email");
+        String usuario = request.getParameter("usuario");
+        String senha = request.getParameter("senha");
+        String confirmarSenha = request.getParameter("confirmar-senha");
 
-        System.out.println(name);
-
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        if(!senha.equals(confirmarSenha)) {
+            request.setAttribute("errorMessage", "As senhas não coincidem. Tente novamente.");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
+        }else {
+            usuariosDAO.criarUsuario(new Usuario(nome, email, usuario, senha));
+            response.sendRedirect("login.jsp");
+        }
     }
 }
