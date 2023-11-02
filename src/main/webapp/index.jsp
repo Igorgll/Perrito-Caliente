@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./styles/navbar.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
     <link rel="stylesheet" href="./styles/banner.css" />
+    <link rel="stylesheet" href="./styles/indexContent.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,6 +46,183 @@
             <button id="search__button">Pesquisar</button>
           </div>
         </div>
+      </div>
+      <div class="index__content">
+        <section class="recipes__carousel">
+          <div class="carousel__container">
+            <ul>
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                        alt="Foto da Ana de Armas"
+                      />
+                      <span>Ana de Armas</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
+                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
+                </div>
+                <div class="card__description">
+                  <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                </div>
+              </li>
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                        alt="Foto da Ana de Armas"
+                      />
+                      <span>Ana de Armas</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
+                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
+                </div>
+                <div class="card__description">
+                  <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                </div>
+              </li>
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                        alt="Foto da Ana de Armas"
+                      />
+                      <span>Ana de Armas</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
+                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
+                </div>
+                <div class="card__description">
+                  <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                </div>
+              </li>
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                        alt="Foto da Ana de Armas"
+                      />
+                      <span>Ana de Armas</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
+                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
+                </div>
+                <div class="card__description">
+                  <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                </div>
+              </li>
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                        alt="Foto da Ana de Armas"
+                      />
+                      <span>Ana de Armas</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
+                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
+                </div>
+                <div class="card__description">
+                  <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                </div>
+              </li>
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                        alt="Foto da Ana de Armas"
+                      />
+                      <span>Ana de Armas</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
+                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
+                </div>
+                <div class="card__description">
+                  <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="another__recipes"></section>
       </div>
       <footer>
         <div class="logo-footer">
