@@ -222,7 +222,68 @@
             </ul>
           </div>
         </section>
-        <section class="another__recipes"></section>
+        <section class="another__recipes">
+          <h2>Outras receitas</h2>
+          <div class="big-cards__section">
+            <div class="first-big__card">
+              <div class="big-card__bg"></div>
+              <div style="padding: 30px">
+                <h3 style="font-size: 26px; font-weight: 600; margin-bottom: 10px;">Ratatouille Meal</h3>
+                <p style="font-size: 18px; font-weight: 400;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
+                  aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
+                  necessitatibus adipisci.
+                </p>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: end;">
+                <div style="padding-left: 30px;">
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                </div>
+                <div class="card__profile-pic" style="margin-right: 30px;">
+                  <img
+                    id="profile__pic"
+                    src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                    alt="Foto da Ana de Armas"
+                  />
+                  <span style="color: #000; font-weight: 500;">Ana de Armas</span>
+                </div>
+              </div>
+            </div>
+            <div class="second-big__card">
+              <div class="second-big-card__bg"></div>
+              <div style="padding: 30px">
+                <h3 style="font-size: 26px; font-weight: 600; margin-bottom: 10px;">Feijoada</h3>
+                <p style="font-size: 18px; font-weight: 400;">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
+                  aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
+                  necessitatibus adipisci.
+                </p>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: end;">
+                <div style="padding-left: 30px;">
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                  <img src="./styles/assets/star.png" alt="Star Icon" />
+                </div>
+                <div class="card__profile-pic" style="margin-right: 30px;">
+                  <img
+                    id="profile__pic"
+                    src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                    alt="Foto da Ana de Armas"
+                  />
+                  <span style="color: #000; font-weight: 500;">Ana de Armas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="see-all__recipes">
+          <button>Veja todas as receitas</button>
+        </div>
       </div>
       <footer>
         <div class="logo-footer">

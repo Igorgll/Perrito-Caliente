@@ -1,3 +1,8 @@
+:root {
+  scrollbar-color: #e3e3e3 #1d1c1a !important;
+  scrollbar-width: thin !important;
+}
+
 .index__content {
   padding: 0 70px;
   width: 100%;
@@ -99,23 +104,71 @@
   height: 20px;
 }
 
-/* SCROLLBAR */
-*::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+.another__recipes {
+  margin-bottom: 40px;
 }
 
-*::-webkit-scrollbar-track {
-  width: 12px;
-  box-shadow: inset 0 0 0.3rem #00000050;
-  background-color: #1d1c1a;
+.another__recipes h2 {
+  text-align: start;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: #fefefe;
+.big-cards__section {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
 }
 
-:root {
-  scrollbar-color: #e3e3e3 #1d1c1a !important;
-  scrollbar-width: thin !important;
+.first-big__card,
+.second-big__card {
+  width: 50%;
+  height: 780px;
+  background: #fefefe;
+  border-radius: 6px;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.7));
+}
+
+.big-card__bg {
+  height: 550px;
+  background: url("./assets/ratatouille-meal.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.second-big-card__bg {
+  height: 550px;
+  background: url("./assets/Feijoada.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.see-all__recipes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.see-all__recipes button {
+  width: 700px;
+  height: 60px;
+  background: transparent;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  border-radius: 6px;
+  font-size: 18px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.see-all__recipes button:hover {
+  background: var(--orange);
+  color: var(--light);
 }
