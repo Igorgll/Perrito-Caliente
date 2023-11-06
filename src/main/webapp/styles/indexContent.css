@@ -1,0 +1,174 @@
+:root {
+  scrollbar-color: #e3e3e3 #1d1c1a !important;
+  scrollbar-width: thin !important;
+}
+
+.index__content {
+  padding: 0 70px;
+  width: 100%;
+  height: auto;
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recipes__carousel {
+  margin: 60px 40px;
+}
+
+.carousel__container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.carousel__container ul {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  list-style: none;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.carousel__container ul li {
+  cursor: pointer;
+}
+
+.recipe__card {
+  max-width: 360px;
+  height: 260px;
+  background: #fefefe;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.7));
+  border-radius: 10px;
+  user-select: none;
+}
+
+.card__background {
+  position: relative;
+}
+
+.card__background img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card__profile {
+  padding: 10px 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__profile-pic {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 160px;
+}
+
+.card__profile-pic span {
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 10px;
+  white-space: nowrap;
+}
+
+#profile__pic {
+  max-width: 30%;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.card__description {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.card__stars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card__stars img {
+  width: 20px;
+  height: 20px;
+}
+
+.another__recipes {
+  margin-bottom: 40px;
+}
+
+.another__recipes h2 {
+  text-align: start;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.big-cards__section {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+
+.first-big__card,
+.second-big__card {
+  width: 50%;
+  height: 780px;
+  background: #fefefe;
+  border-radius: 6px;
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.7));
+}
+
+.big-card__bg {
+  height: 550px;
+  background: url("./assets/ratatouille-meal.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.second-big-card__bg {
+  height: 550px;
+  background: url("./assets/Feijoada.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.see-all__recipes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.see-all__recipes button {
+  width: 700px;
+  height: 60px;
+  background: transparent;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  border-radius: 6px;
+  font-size: 18px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.see-all__recipes button:hover {
+  background: var(--orange);
+  color: var(--light);
+}
