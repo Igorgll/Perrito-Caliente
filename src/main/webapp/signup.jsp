@@ -19,9 +19,11 @@
   <body>
     <div class="content-wrapper">
       <nav>
+        <a href="index.jsp">
         <div class="logo">
           <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
         </div>
+        </a>
         <ul class="nav-list">
           <li>Receitas</li>
           <li>Sobre nós</li>
@@ -29,7 +31,7 @@
         </ul>
         <div class="nav-buttons">
           <button>Cadastre-se</button>
-          <button>Entrar</button>
+          <button><a href="login.jsp">Entrar</a></button>
         </div>
       </nav>
       <main>

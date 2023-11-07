@@ -20,17 +20,20 @@
   <body>
     <div class="wrapper">
       <nav>
+      <a href="index.jsp">
         <div class="logo">
           <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
         </div>
+        </a>
         <ul class="nav-list">
           <li>Receitas</li>
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
         <div class="nav-buttons">
-          <button>Cadastre-se</button>
-          <button>Entrar</button>
+          <button><a href="signup.jsp">Cadastre-se</a></button>
+          <button><a href="login.jsp">Entrar</a></button>
+
         </div>
       </nav>
       <div class="banner">
