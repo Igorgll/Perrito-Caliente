@@ -30,9 +30,8 @@
           <li>Contato</li>
         </ul>
         <div class="nav-buttons">
-          <button><a href="signup.jsp">Cadastre-se</a></button>
-          <button><a href="login.jsp">Entrar</a></button>
-
+          <button>Cadastre-se</button>
+          <button>Entrar</button>
         </div>
       </nav>
 

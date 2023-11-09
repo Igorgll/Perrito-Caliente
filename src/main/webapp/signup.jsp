@@ -31,7 +31,7 @@
         </ul>
         <div class="nav-buttons">
           <button>Cadastre-se</button>
-          <button><a href="login.jsp">Entrar</a></button>
+          <button>Entrar</button>
         </div>
       </nav>
       <main>
