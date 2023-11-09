@@ -3,12 +3,18 @@
 @import url("./footer.css");
 @import url("./banner.css");
 @import url("./indexContent.css");
+@import url("./recipes.css");
 
 :root {
   --light: #fefefe;
   --orange: #ffa269;
   --gray: #7f8899;
   --background-gray: #eee;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 *::-webkit-scrollbar {

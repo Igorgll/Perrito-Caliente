@@ -19,13 +19,13 @@
   <body>
     <div class="content-wrapper">
       <nav>
-      <a href="index.jsp">
-        <div class="logo">
-          <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
-        </div>
+        <a href="index.jsp">
+          <div class="logo">
+            <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+          </div>
         </a>
         <ul class="nav-list">
-          <li>Receitas</li>
+          <a href="./recipes.jsp" style="text-decoration: none; color: inherit;"><li>Receitas</li></a>
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
