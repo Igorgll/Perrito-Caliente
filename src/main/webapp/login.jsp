@@ -36,9 +36,9 @@
       </nav>
 
       <main style="height: 90%">
-        <form action="seu_script_de_processamento" method="post">
+        <form action="/login" method="post">
           <h2>Entrar</h2>
-          <span>Não possui uma conta? <a href="#">Cadastre-se</a></span>
+          <span>Não possui uma conta? <a href="./signup.jsp">Cadastre-se</a></span>
 
           <label for="usuario">Usuário:</label>
           <input type="text" id="usuario" name="usuario" required />

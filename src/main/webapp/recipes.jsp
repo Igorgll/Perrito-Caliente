@@ -41,7 +41,7 @@
       </div>
       <div class="index__content" style="padding: 20px 70px">
         <div class="categories__searchBar">
-          <select name="cars" id="cars">
+          <select name="cars" id="cars" style="color: #7F8899;">
             <option value="" hidden>Selecione uma categoria</option>
             <option value="Picanha">Picanha</option>
             <option value="Light">Light</option>

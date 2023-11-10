@@ -9,6 +9,8 @@ public class Queries {
     // USUÁRIOS
     public static final String CRIA_USUARIO = "INSERT INTO USUARIOS (NOME, EMAIL, USUARIO, SENHA) VALUES (?, ?, ?, ?)";
 
+    public static final String AUTENTICA_USUARIO = "SELECT * FROM USUARIOS WHERE USUARIO = ? AND SENHA = ?";
+
     public static final String LISTAR_USUARIOS = "SELECT * FROM Usuarios";
 
     public static final String DELETAR_USUARIO = "DELETE Usuario WHERE idUsuario = ?";

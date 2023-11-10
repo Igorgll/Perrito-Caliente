@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="br.com.perritoCaliente.model.Usuario" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -31,8 +34,26 @@
           <li>Contato</li>
         </ul>
         <div class="nav-buttons">
-          <button>Cadastre-se</button>
-          <button>Entrar</button>
+            <!-- Verificação de usuário na sessão -->
+            <%
+                HttpSession currentSession = request.getSession(false);
+                Usuario usuarioLogado = (currentSession != null) ? (Usuario) currentSession.getAttribute("usuarioLogado") : null;
+
+                if (usuarioLogado == null) {
+            %>
+                <!-- usuário não logado - exibe botões de cadastro e entrar -->
+                <button class="login-btn">Cadastre-se</button>
+                <button class="signup-btn">Entrar</button>
+            <%
+                } else {
+            %>
+                <!-- usuário logado - exibe mensagem de boas-vindas -->
+                <div class="logged-nav" style="border: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 20px">
+                    <button style="background: red; border: 0; color: #FFFFFF">Sair</button>
+                </div>
+            <%
+                }
+            %>
         </div>
       </nav>
       <div class="banner">
@@ -284,7 +305,7 @@
           </div>
         </section>
         <div class="see-all__recipes">
-          <button>Veja todas as receitas</button>
+          <a href="./recipes.jsp"><button>Veja todas as receitas</button></a>
         </div>
       </div>
       <footer>
@@ -298,5 +319,7 @@
         </div>
       </footer>
     </div>
+    
+    <script src="./script.js"></script>
   </body>
 </html>
