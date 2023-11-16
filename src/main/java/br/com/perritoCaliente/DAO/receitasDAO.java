@@ -19,13 +19,19 @@ public class receitasDAO {
     private static final String USER = "sa";
     private static final String PASSWORD = "sa";
 
-    public static void inserirReceita(Receita receita) {
+    public static int inserirReceita(Receita receita) {
+        int idGerado = 0;
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA)) {
                 preparedStatement.setString(1, receita.getNomeReceita());
-                preparedStatement.setString(1, receita.getNomeReceita());
+                preparedStatement.setString(2, receita.getModoPreparo());
                 int affectedRows = preparedStatement.executeUpdate();
                 if (affectedRows > 0) {
+                    try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()){
+//                        if (generatedKeys.next()) {
+                            idGerado = generatedKeys.getInt(0); //obtem o id gerado
+//                        }
+                    }
                     System.out.println("Receita adicionada com sucesso!");
                 } else {
                     System.out.println("Falha ao adicionar a receita!");
@@ -33,19 +39,25 @@ public class receitasDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
+        return idGerado; //
     }
 
-    public static void inserirImagem(ImagemReceita img) {
+    public static void inserirImagem(ImagemReceita img, int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_IMAGEM)) {
-                preparedStatement.setString(1, img.getImagem());
-                preparedStatement.setString(1, "");
-                int affectedRows = preparedStatement.executeUpdate();
-                if (affectedRows > 0) {
-                    System.out.println("Imagem adicionada com sucesso!");
+                if (idReceita == 0){
+                    preparedStatement.setInt(1, idReceita);
+                    preparedStatement.setString(2, img.getImagem());
+                    int affectedRows = preparedStatement.executeUpdate();
+                    if (affectedRows > 0) {
+                        System.out.println("Imagem adicionada com sucesso a receita com id: " + idReceita);
+                    } else {
+                        System.out.println("Falha ao adicionar a imagem!");
+                    }
                 } else {
-                    System.out.println("Falha ao adicionar a imagem!");
+                    System.out.printf("falha ao adicionar imagem");
                 }
             }
         } catch (SQLException e) {
@@ -65,9 +77,10 @@ public class receitasDAO {
 
             while (resultSet.next()) {
                 String recipeName = resultSet.getString("titulo");
+                String recipePreparement = resultSet.getString("modoPreparo");
                 int recipeId = resultSet.getInt("idReceita");
 
-                Receita receita = new Receita(recipeName, recipeId);
+                Receita receita = new Receita(recipeName, recipePreparement);
                 recipes.add(receita);
             }
 
@@ -113,7 +126,7 @@ public class receitasDAO {
 
     public void deletarReceitaPorId(int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA)) {
 
             preparedStatement.setInt(1, idReceita);
             int affectedRows = preparedStatement.executeUpdate();
@@ -132,10 +145,11 @@ public class receitasDAO {
 
     public static void atualizarReceita(Receita receita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
 
             preparedStatement.setString(1, receita.getNomeReceita());
-            preparedStatement.setInt(2, receita.getIdReceita());
+            preparedStatement.setString(2, receita.getModoPreparo());
+            preparedStatement.setInt(3, receita.getIdReceita());
 
             int affectedRows = preparedStatement.executeUpdate();
 

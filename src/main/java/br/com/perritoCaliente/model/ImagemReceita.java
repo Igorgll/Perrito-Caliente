@@ -1,9 +1,9 @@
 package br.com.perritoCaliente.model;
 import java.io.File;
 public class ImagemReceita {
-private String imagem;
-private String nomeImagem;
-private int idImagem;
+    private String imagem;
+    private String nomeImagem;
+    private int idImagem;
 
     public ImagemReceita(String imagem, String nomeImagem) {
         this.imagem = imagem;

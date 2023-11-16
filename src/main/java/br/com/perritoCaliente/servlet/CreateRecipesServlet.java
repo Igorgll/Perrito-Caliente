@@ -30,22 +30,33 @@ public class CreateRecipesServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         Map<String, String> parameters = uploadImage(req);
-
-        //String recipeName = parameters.get("recipe-name");
+        //recupear o id da receita
         //int recipeId = Integer.parseInt(parameters.get("id"));
+        //recupera o nome e modo de preparo
+        String recipeName = parameters.get("recipe-name");
+        String recipePreparement = parameters.get("recipe-preparation");
+        //recupera a imagem
         String image = parameters.get("image");
-
-        //Receita receita = new Receita(recipeName, recipeId);
+        //instancia uma receita e passa os parametros recuperados
+        Receita receita = new Receita(recipeName, recipePreparement);
+        //instancia uma imagem e passa o parametro recuperado
         ImagemReceita img = new ImagemReceita(image);
-        receitasDAO.inserirImagem(img);
+        //executa a criação de receita
+        receitasDAO.inserirReceita(receita);
+        int receitaID = receitasDAO.inserirReceita(receita);
+        System.out.println(receitaID);
+        receitasDAO.inserirImagem(img, receitaID);
+        //verifica se o id passado pela pagina é igual a zero
         /*if (recipeId == 0) {
-            //receitasDAO.inserirReceita(receita);
-            receitasDAO.inserirImagem(img);
-        } else {
+            int receitaID = receitasDAO.inserirReceita(receita);
+            receitasDAO.inserirImagem(img, receitaID);
+        }
+        //caso não seja inicia o modo de atualização
+        else {
             receitasDAO.atualizarReceita(receita);
         }*/
 
-        //resp.sendRedirect("/find-all-recipes");
+        resp.sendRedirect("/find-all-recipes");
     }
 
     private Map<String, String> uploadImage(HttpServletRequest httpServletRequest) {
@@ -82,4 +93,3 @@ public class CreateRecipesServlet extends HttpServlet {
     }
 
 }
-
