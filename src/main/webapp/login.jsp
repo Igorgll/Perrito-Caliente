@@ -24,8 +24,10 @@
             <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
           </div>
         </a>
-        <ul class="nav-list">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit;"><li>Receitas</li></a>
+        <ul class="nav-list" style="margin-bottom: 0;">
+          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+            ><li>Receitas</li></a
+          >
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>

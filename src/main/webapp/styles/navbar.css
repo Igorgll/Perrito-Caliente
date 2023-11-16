@@ -17,6 +17,7 @@ nav {
   margin-left: auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   list-style: none;
   font-size: 18px;
