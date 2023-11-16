@@ -8,12 +8,16 @@
 <form action="/create-recipe" method="post" enctype="multipart/form-data">
 
     <div>
-        <label>Car Name</label>
+        <label>Crie sua receita</label>
+        <input type="text" name="recipe-name" id="recipe-name" value="${param.name}">
+        <input type="text" name="recipe-preparation" id="recipe-preparation" value="${param.name}">
     </div>
+    <br>
     <div>
-        <label>Image</label>
+        <label>Insira a imagem</label>
         <input type="file" name="image" id="image">
     </div>
+    </br>
     <button type="submit">Register</button>
 
 </form>

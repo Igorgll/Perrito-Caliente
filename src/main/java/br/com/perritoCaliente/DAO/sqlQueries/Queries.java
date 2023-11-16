@@ -14,12 +14,12 @@ public class Queries {
 
     public static final String PESQUISAR_RECEITAS = "SELECT * FROM Receitas WHERE TITUTLO LIKE %?%"; //Não retorna pesquisas com erros de digitação e afins
 
-    public static final String INSERIR_IMAGEM = "INSERT INTO IMAGENSRECEITAS (IMAGEM) VALUES (?)";
+    public static final String INSERIR_IMAGEM = "INSERT INTO IMAGENSRECEITAS (IDRECEITA, IMAGEM) VALUES (?, ?)";
 
     public static final String  LISTAR_IMAGEM = "SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?";
 
     //CATEGORIAS
-    public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";//?? nem sei se vai precisar dessa porra kkkk
+    public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";
 
     // USUÁRIOS
     public static final String CRIA_USUARIO = "INSERT INTO USUARIOS (NOME, EMAIL, USUARIO, SENHA) VALUES (?, ?, ?, ?)";
@@ -31,5 +31,5 @@ public class Queries {
     public static final String DELETAR_USUARIO = "DELETE Usuario WHERE idUsuario = ?";
 
     public static final String DELETAR_RECEITA = "DELETE Receitas WHERE idReceita = ?";
-    public static final String ATUALIZAR_RECEITA = "UPDATE Receitas SET titulo = ? WHERE idReceita = ?";
+    public static final String ATUALIZAR_RECEITA = "UPDATE Receitas SET titulo = ?, modoPreparo = ? WHERE idReceita = ?";
 }
