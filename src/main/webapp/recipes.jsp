@@ -26,7 +26,9 @@ import="javax.servlet.http.HttpSession" %>
       <nav>
         <a href="index.jsp">
           <div class="logo">
-            <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+            <a href="./index.jsp">
+              <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+            </a>
           </div>
         </a>
           <ul class="nav-list" style="margin-bottom: 0;">

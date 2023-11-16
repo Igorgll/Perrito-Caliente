@@ -34,8 +34,12 @@
           <li>Contato</li>
         </ul>
         <div class="nav-buttons">
-          <button>Cadastre-se</button>
-          <button>Entrar</button>
+          <a href="./signup.jsp" style="text-decoration: none; color: inherit"
+            ><button class="login-btn">Cadastre-se</button></a
+          >
+          <a href="./login.jsp" style="text-decoration: none; color: inherit"
+            ><button class="signup-btn">Entrar</button></a
+          >
         </div>
       </nav>
       <main>
@@ -63,7 +67,12 @@
             required
           />
 
-          <button type="submit">Cadastrar</button>
+                    <a href="./signup.jsp" style="text-decoration: none; color: inherit"
+                      ><button class="login-btn">Cadastre-se</button></a
+                    >
+                    <a href="./login.jsp" style="text-decoration: none; color: inherit"
+                      ><button class="signup-btn">Entrar</button></a
+                    >
 
           <c:if test="${not empty errorMessage}">
             <div>${errorMessage}</div>
