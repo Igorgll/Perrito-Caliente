@@ -1,4 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %> <%@ page
+import="br.com.perritoCaliente.model.Usuario" %> <%@ page
+import="javax.servlet.http.HttpSession" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -26,16 +29,84 @@
             <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
           </div>
         </a>
-        <ul class="nav-list" style="margin-bottom: 0;">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
-            ><li>Receitas</li></a
-          >
-          <li>Sobre nós</li>
-          <li>Contato</li>
-        </ul>
+          <ul class="nav-list" style="margin-bottom: 0;">
+            <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+              ><li>Receitas</li></a
+            >
+            <li>Sobre nós</li>
+            <li>Contato</li>
+          </ul>
         <div class="nav-buttons">
-          <button>Cadastre-se</button>
-          <button>Entrar</button>
+          <!-- Verificação de usuário na sessão -->
+          <% HttpSession currentSession = request.getSession(false); Usuario
+          usuarioLogado = (currentSession != null) ? (Usuario)
+          currentSession.getAttribute("usuarioLogado") : null; if (usuarioLogado
+          == null) { %>
+          <!-- usuário não logado - exibe botões de cadastro e entrar -->
+          <a href="./signup.jsp" style="text-decoration: none; color: inherit"
+            ><button class="login-btn">Cadastre-se</button></a
+          >
+          <a href="./login.jsp" style="text-decoration: none; color: inherit"
+            ><button class="signup-btn">Entrar</button></a
+          >
+          <% } else { %>
+          <!-- usuário logado -->
+          <div
+            class="logged-nav"
+            style="
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              border: 0;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              gap: 20px;
+            "
+          >
+            <span style="color: #000"
+              >Bem-vindo, <%= usuarioLogado.getNome() %></span
+            >
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <button
+                class="login-btn"
+                id="openModalBtn"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                >
+                Adicionar receita
+              </button>
+            </div>
+            <div>
+              <form action="logout" method="post">
+                <button
+                  class="login-btn"
+                  style="
+                    width: 150px;
+                    height: 46px;
+                    font-size: 18px;
+                    border-radius: 6px;
+                    border: none;
+                    background: var(--orange);
+                    color: var(--light);
+                    cursor: pointer;
+                    margin: 0;
+                  "
+                >
+                  Sair
+                </button>
+              </form>
+            </div>
+          </div>
+          <% } %>
         </div>
       </nav>
       <div class="banner" style="height: 390px">
