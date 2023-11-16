@@ -5,30 +5,25 @@ import java.util.ArrayList;
 public class Receita {
     private int idReceita;
     private String nomeReceita;
-    private ArrayList<Ingrediente> ingredientes;
-    private String imagemReceita;
-    private String tipoReceita;
-    private String videoReceita;
+    private String modoPreparo;
 
-    public Receita(String nomeReceita) {
+    public Receita(String nomeReceita, String modoPreparo) {
         this.nomeReceita = nomeReceita;
+        this.modoPreparo = modoPreparo;
     }
 
-    public Receita(String nomeReceita, int idReceita) {
-        this.nomeReceita = nomeReceita;
+    public Receita(int idReceita, String nomeReceita, String modoPreparo) {
         this.idReceita = idReceita;
-    }
-
-
-    public Receita(String nomeReceita, ArrayList<Ingrediente> ingredientes, String imagemReceita, String tipoReceita, String videoReceita) {
         this.nomeReceita = nomeReceita;
-        this.ingredientes = ingredientes;
-        this.imagemReceita = imagemReceita;
-        this.tipoReceita = tipoReceita;
-        this.videoReceita = videoReceita;
+        this.modoPreparo = modoPreparo;
     }
 
-    public Receita() {
+    public String getModoPreparo() {
+        return modoPreparo;
+    }
+
+    public void setModoPreparo(String modoPreparo) {
+        this.modoPreparo = modoPreparo;
     }
 
     public int getIdReceita() {
@@ -47,35 +42,4 @@ public class Receita {
         this.nomeReceita = nomeReceita;
     }
 
-    public ArrayList<Ingrediente> getIngredientes() {
-        return ingredientes;
-    }
-
-    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
-        this.ingredientes = ingredientes;
-    }
-
-    public String getImagemReceita() {
-        return imagemReceita;
-    }
-
-    public void setImagemReceita(String imagemReceita) {
-        this.imagemReceita = imagemReceita;
-    }
-
-    public String getTipoReceita() {
-        return tipoReceita;
-    }
-
-    public void setTipoReceita(String tipoReceita) {
-        this.tipoReceita = tipoReceita;
-    }
-
-    public String getVideoReceita() {
-        return videoReceita;
-    }
-
-    public void setVideoReceita(String videoReceita) {
-        this.videoReceita = videoReceita;
-    }
 }
