@@ -66,14 +66,7 @@
             name="confirmar-senha"
             required
           />
-
-                    <a href="./signup.jsp" style="text-decoration: none; color: inherit"
-                      ><button class="login-btn">Cadastre-se</button></a
-                    >
-                    <a href="./login.jsp" style="text-decoration: none; color: inherit"
-                      ><button class="signup-btn">Entrar</button></a
-                    >
-
+          <button type="submit">Cadastrar</button>
           <c:if test="${not empty errorMessage}">
             <div>${errorMessage}</div>
           </c:if>
