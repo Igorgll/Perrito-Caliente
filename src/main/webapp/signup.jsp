@@ -19,11 +19,17 @@
   <body>
     <div class="content-wrapper">
       <nav>
-        <div class="logo">
-          <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
-        </div>
-        <ul class="nav-list">
-          <li>Receitas</li>
+        <a href="index.jsp">
+          <div class="logo">
+            <a href="./index.jsp">
+              <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+            </a>
+          </div>
+        </a>
+        <ul class="nav-list" style="margin-bottom: 0;">
+          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+            ><li>Receitas</li></a
+          >
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
@@ -60,9 +66,7 @@
           <button type="submit">Cadastrar</button>
 
           <c:if test="${not empty errorMessage}">
-              <div>
-                  ${errorMessage}
-              </div>
+            <div>${errorMessage}</div>
           </c:if>
         </form>
       </main>

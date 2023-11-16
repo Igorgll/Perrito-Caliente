@@ -59,7 +59,7 @@ CREATE TABLE ImagensReceitas (
     idImagem INT AUTO_INCREMENT PRIMARY KEY,
     idReceita INT,
     nomeArquivo VARCHAR(255) NOT NULL,
-    imagem BLOB NOT NULL, -- binary large object para armazenar imagens
+    imagem VARCHAR(255) NOT NULL,
     FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita)
 );
 

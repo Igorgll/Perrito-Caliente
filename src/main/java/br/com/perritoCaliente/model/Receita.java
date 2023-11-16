@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Receita {
     private int idReceita;
     private String nomeReceita;
+    private String modoDePreparo;
     private ArrayList<Ingrediente> ingredientes;
     private String imagemReceita;
     private String tipoReceita;
@@ -18,7 +19,6 @@ public class Receita {
         this.nomeReceita = nomeReceita;
         this.idReceita = idReceita;
     }
-
 
     public Receita(String nomeReceita, ArrayList<Ingrediente> ingredientes, String imagemReceita, String tipoReceita, String videoReceita) {
         this.nomeReceita = nomeReceita;
@@ -77,5 +77,13 @@ public class Receita {
 
     public void setVideoReceita(String videoReceita) {
         this.videoReceita = videoReceita;
+    }
+
+    public String getModoDePreparo() {
+        return modoDePreparo;
+    }
+
+    public void setModoDePreparo(String modoDePreparo) {
+        this.modoDePreparo = modoDePreparo;
     }
 }

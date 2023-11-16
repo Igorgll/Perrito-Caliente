@@ -19,11 +19,15 @@
   <body>
     <div class="content-wrapper">
       <nav>
-        <div class="logo">
-          <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
-        </div>
-        <ul class="nav-list">
-          <li>Receitas</li>
+        <a href="index.jsp">
+          <div class="logo">
+            <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+          </div>
+        </a>
+        <ul class="nav-list" style="margin-bottom: 0;">
+          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+            ><li>Receitas</li></a
+          >
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
@@ -34,9 +38,9 @@
       </nav>
 
       <main style="height: 90%">
-        <form action="seu_script_de_processamento" method="post">
+        <form action="/login" method="post">
           <h2>Entrar</h2>
-          <span>Não possui uma conta? <a href="#">Cadastre-se</a></span>
+          <span>Não possui uma conta? <a href="./signup.jsp">Cadastre-se</a></span>
 
           <label for="usuario">Usuário:</label>
           <input type="text" id="usuario" name="usuario" required />

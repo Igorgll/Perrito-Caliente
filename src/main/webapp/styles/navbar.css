@@ -17,6 +17,7 @@ nav {
   margin-left: auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: row;
   list-style: none;
   font-size: 18px;
@@ -38,7 +39,7 @@ nav {
   gap: 14px;
 }
 
-.nav-buttons :nth-child(1) {
+.nav-buttons .login-btn {
   width: 150px;
   height: 46px;
   background: transparent;
@@ -50,12 +51,12 @@ nav {
   cursor: pointer;
 }
 
-.nav-buttons :nth-child(1):hover {
+.nav-buttons .login-btn:hover {
   background: var(--orange);
   color: var(--light);
 }
 
-.nav-buttons :nth-child(2) {
+.nav-buttons .signup-btn {
   width: 150px;
   height: 46px;
   font-size: 18px;
@@ -64,4 +65,8 @@ nav {
   background: var(--orange);
   color: var(--light);
   cursor: pointer;
+}
+
+.logged-nav:hover, .logged-nav span:hover, .logged-nav button:hover {
+    background: none;
 }

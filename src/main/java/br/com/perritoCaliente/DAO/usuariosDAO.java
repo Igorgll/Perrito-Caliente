@@ -35,6 +35,25 @@ public class usuariosDAO {
         }
     }
 
+    public static Usuario autenticaUsuario(String usuario, String senha) {
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(AUTENTICA_USUARIO)) {
+                preparedStatement.setString(1, usuario);
+                preparedStatement.setString(2, senha);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    if (resultSet.next()) {
+                        System.out.println("Usuário autenticado: " + resultSet.getString("usuario"));
+                        return new Usuario(resultSet.getString("nome"), resultSet.getString("email"), resultSet.getString("usuario"), resultSet.getString("senha"));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // caso de invalidez no login
+    }
+
     public List<Usuario> exibirTodosUsuarios() {
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_USUARIOS);
