@@ -1,6 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="br.com.perritoCaliente.model.Usuario" %>
-<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page contentType="text/html; charset=UTF-8" %> <%@ page
+import="br.com.perritoCaliente.model.Usuario" %> <%@ page
+import="javax.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,37 +23,63 @@
   <body>
     <div class="wrapper">
       <nav>
-      <a href="index.jsp">
-        <div class="logo">
-          <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
-        </div>
+        <a href="index.jsp">
+          <div class="logo">
+            <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+          </div>
         </a>
         <ul class="nav-list">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit;"><li>Receitas</li></a>
+          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+            ><li>Receitas</li></a
+          >
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
         <div class="nav-buttons">
-            <!-- Verificação de usuário na sessão -->
-            <%
-                HttpSession currentSession = request.getSession(false);
-                Usuario usuarioLogado = (currentSession != null) ? (Usuario) currentSession.getAttribute("usuarioLogado") : null;
-
-                if (usuarioLogado == null) {
-            %>
-                <!-- usuário não logado - exibe botões de cadastro e entrar -->
-                <button class="login-btn">Cadastre-se</button>
-                <button class="signup-btn">Entrar</button>
-            <%
-                } else {
-            %>
-                <!-- usuário logado - exibe mensagem de boas-vindas -->
-                <div class="logged-nav" style="border: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 20px">
-                    <button style="background: red; border: 0; color: #FFFFFF">Sair</button>
-                </div>
-            <%
-                }
-            %>
+          <!-- Verificação de usuário na sessão -->
+          <% HttpSession currentSession = request.getSession(false); Usuario
+          usuarioLogado = (currentSession != null) ? (Usuario)
+          currentSession.getAttribute("usuarioLogado") : null; if (usuarioLogado
+          == null) { %>
+          <!-- usuário não logado - exibe botões de cadastro e entrar -->
+          <a href="./signup.jsp" style="text-decoration: none; color: inherit"
+            ><button class="login-btn">Cadastre-se</button></a
+          >
+          <a href="./login.jsp" style="text-decoration: none; color: inherit"
+            ><button class="signup-btn">Entrar</button></a
+          >
+          <% } else { %>
+          <!-- usuário logado -->
+          <div
+            class="logged-nav"
+            style="
+              border: 0;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              gap: 20px;
+            "
+          >
+            <span style="color: var(--orange); margin-right: 12px;; padding-bottom: 10px;">Bem-vindo, <%= usuarioLogado.getNome() %></span>
+            <form action="logout" method="post">
+              <button
+                style="
+                  width: 150px;
+                  height: 46px;
+                  font-size: 18px;
+                  border-radius: 6px;
+                  border: none;
+                  background: var(--orange);
+                  color: var(--light);
+                  cursor: pointer;
+                "
+              >
+                Sair
+              </button>
+            </form>
+          </div>
+          <% } %>
         </div>
       </nav>
       <div class="banner">
@@ -251,54 +277,78 @@
             <div class="first-big__card">
               <div class="big-card__bg"></div>
               <div style="padding: 30px">
-                <h3 style="font-size: 26px; font-weight: 600; margin-bottom: 10px;">Ratatouille Meal</h3>
-                <p style="font-size: 18px; font-weight: 400;">
+                <h3
+                  style="font-size: 26px; font-weight: 600; margin-bottom: 10px"
+                >
+                  Ratatouille Meal
+                </h3>
+                <p style="font-size: 18px; font-weight: 400">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
                   aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
                   necessitatibus adipisci.
                 </p>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: end;">
-                <div style="padding-left: 30px;">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: end;
+                "
+              >
+                <div style="padding-left: 30px">
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                 </div>
-                <div class="card__profile-pic" style="margin-right: 30px;">
+                <div class="card__profile-pic" style="margin-right: 30px">
                   <img
                     id="profile__pic"
                     src="./styles/assets/ana-de-armas-today-square-ak.jpg"
                     alt="Foto da Ana de Armas"
                   />
-                  <span style="color: #000; font-weight: 500;">Ana de Armas</span>
+                  <span style="color: #000; font-weight: 500"
+                    >Ana de Armas</span
+                  >
                 </div>
               </div>
             </div>
             <div class="second-big__card">
               <div class="second-big-card__bg"></div>
               <div style="padding: 30px">
-                <h3 style="font-size: 26px; font-weight: 600; margin-bottom: 10px;">Feijoada</h3>
-                <p style="font-size: 18px; font-weight: 400;">
+                <h3
+                  style="font-size: 26px; font-weight: 600; margin-bottom: 10px"
+                >
+                  Feijoada
+                </h3>
+                <p style="font-size: 18px; font-weight: 400">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
                   aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
                   necessitatibus adipisci.
                 </p>
               </div>
-              <div style="display: flex; justify-content: space-between; align-items: end;">
-                <div style="padding-left: 30px;">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: end;
+                "
+              >
+                <div style="padding-left: 30px">
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                   <img src="./styles/assets/star.png" alt="Star Icon" />
                 </div>
-                <div class="card__profile-pic" style="margin-right: 30px;">
+                <div class="card__profile-pic" style="margin-right: 30px">
                   <img
                     id="profile__pic"
                     src="./styles/assets/ana-de-armas-today-square-ak.jpg"
                     alt="Foto da Ana de Armas"
                   />
-                  <span style="color: #000; font-weight: 500;">Ana de Armas</span>
+                  <span style="color: #000; font-weight: 500"
+                    >Ana de Armas</span
+                  >
                 </div>
               </div>
             </div>
@@ -319,7 +369,7 @@
         </div>
       </footer>
     </div>
-    
+
     <script src="./script.js"></script>
   </body>
 </html>

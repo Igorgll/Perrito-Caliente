@@ -19,13 +19,12 @@
 
 - [] Pesquisar receitas
 - [] Postar receitas
-- [] Salvar receitas
 - [] Atualizar receitas
 - [] Excluir receitas
 - [] Avaliar receitas
 - [] Adicionar vídeo do youtube da receita
-- [] Criar conta
-- [] Fazer Login
+- [x] Criar conta
+- [x] Fazer Login
 
 ### Diagrama Banco de Dados
 
