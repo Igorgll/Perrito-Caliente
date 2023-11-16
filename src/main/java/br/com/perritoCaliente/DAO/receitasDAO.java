@@ -1,8 +1,12 @@
 package br.com.perritoCaliente.DAO;
 
+import br.com.perritoCaliente.model.ImagemReceita;
 import br.com.perritoCaliente.model.Receita;
 import br.com.perritoCaliente.servlet.config.ConnectionPoolConfig;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,9 +19,10 @@ public class receitasDAO {
     private static final String USER = "sa";
     private static final String PASSWORD = "sa";
 
-    public static void criarReceita(Receita receita) {
+    public static void inserirReceita(Receita receita) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA)) {
+                preparedStatement.setString(1, receita.getNomeReceita());
                 preparedStatement.setString(1, receita.getNomeReceita());
                 int affectedRows = preparedStatement.executeUpdate();
                 if (affectedRows > 0) {
@@ -28,6 +33,24 @@ public class receitasDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void inserirImagem(ImagemReceita img) {
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_IMAGEM)) {
+                preparedStatement.setString(1, img.getImagem());
+                preparedStatement.setString(1, "");
+                int affectedRows = preparedStatement.executeUpdate();
+                if (affectedRows > 0) {
+                    System.out.println("Imagem adicionada com sucesso!");
+                } else {
+                    System.out.println("Falha ao adicionar a imagem!");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
@@ -55,6 +78,35 @@ public class receitasDAO {
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Falha na conexão com o banco de dados");
+            return Collections.emptyList();
+        }
+    }
+
+    public List<ImagemReceita> exibirImagem() {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_IMAGEM);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            System.out.println("Conexão bem-sucedida");
+
+            List<ImagemReceita> imgArray = new ArrayList<>();
+
+            while (resultSet.next()) {
+                int imgID = resultSet.getInt("idImagem");
+                String imgName = resultSet.getString("nomeArquivo");
+                String imgFile = resultSet.getString("imagem");
+
+                ImagemReceita img = new ImagemReceita(imgName, imgFile, imgID);
+                imgArray.add(img);
+            }
+
+            System.out.println("Seleção de todas as receitas bem-sucedida");
+
+            return imgArray;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados: " + e.getMessage());
             return Collections.emptyList();
         }
     }

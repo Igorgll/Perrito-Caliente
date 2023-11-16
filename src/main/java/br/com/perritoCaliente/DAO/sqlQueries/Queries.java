@@ -1,10 +1,25 @@
 package br.com.perritoCaliente.DAO.sqlQueries;
 
 public class Queries {
-    //public static final String CRIA_RECEITA = "INSERT INTO tb_receitas (Titulo, Ingredientes, Imagem, Tipo, Video) VALUES (?, ?, ?, ?, ?, ?)";
-    public static final String CRIA_RECEITA = "INSERT INTO Receitas (titulo) VALUES (?)";
+
+    //RECEITAS
+    public static final String CRIA_RECEITA = "INSERT INTO Receitas (TITULO, MODOPREPARO) VALUES (?, ?)";
     public static final String LISTAR_RECEITAS = "SELECT * FROM Receitas";
 
+    public static final String LISTAR_RECEITAS_POR_AVALIACAO = "SELECT RECEITAS.* FROM RECEITAS" +
+            "INNER JOIN AVALIACOES ON RECEITAS.IDRECEITA = AVALIACOES.IDRECEITA" +
+            " WHERE AVALIACAO >= 4 ORDER BY AVALIACAO DESC";
+
+    public static final String LISTAR_RECEITAS_CATEGORIAS = "SELECT * FROM Receitas WHERE IDCATEGORIAS = ?";
+
+    public static final String PESQUISAR_RECEITAS = "SELECT * FROM Receitas WHERE TITUTLO LIKE %?%"; //Não retorna pesquisas com erros de digitação e afins
+
+    public static final String INSERIR_IMAGEM = "INSERT INTO IMAGENSRECEITAS (IMAGEM) VALUES (?)";
+
+    public static final String  LISTAR_IMAGEM = "SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?";
+
+    //CATEGORIAS
+    public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";//?? nem sei se vai precisar dessa porra kkkk
 
     // USUÁRIOS
     public static final String CRIA_USUARIO = "INSERT INTO USUARIOS (NOME, EMAIL, USUARIO, SENHA) VALUES (?, ?, ?, ?)";
