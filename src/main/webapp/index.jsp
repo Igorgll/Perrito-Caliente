@@ -61,6 +61,7 @@ import="javax.servlet.http.HttpSession" %>
               gap: 20px;
             "
           >
+            <span style="color: var(--orange); margin-right: 12px;; padding-bottom: 10px;">Bem-vindo, <%= usuarioLogado.getNome() %></span>
             <form action="logout" method="post">
               <button
                 style="
