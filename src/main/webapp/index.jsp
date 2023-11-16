@@ -16,6 +16,12 @@ import="javax.servlet.http.HttpSession" %>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
@@ -53,6 +59,10 @@ import="javax.servlet.http.HttpSession" %>
           <div
             class="logged-nav"
             style="
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
               border: 0;
               display: flex;
               flex-direction: row;
@@ -61,23 +71,45 @@ import="javax.servlet.http.HttpSession" %>
               gap: 20px;
             "
           >
-            <span style="color: var(--orange); margin-right: 12px;; padding-bottom: 10px;">Bem-vindo, <%= usuarioLogado.getNome() %></span>
-            <form action="logout" method="post">
-              <button
-                style="
-                  width: 150px;
-                  height: 46px;
-                  font-size: 18px;
-                  border-radius: 6px;
-                  border: none;
-                  background: var(--orange);
-                  color: var(--light);
-                  cursor: pointer;
-                "
-              >
-                Sair
+            <span style="color: #000"
+              >Bem-vindo, <%= usuarioLogado.getNome() %></span
+            >
+            <div
+              style="
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <button 
+                class="login-btn" 
+                id="openModalBtn"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                >
+                Adicionar receita
               </button>
-            </form>
+            </div>
+            <div>
+              <form action="logout" method="post">
+                <button
+                  class="login-btn"
+                  style="
+                    width: 150px;
+                    height: 46px;
+                    font-size: 18px;
+                    border-radius: 6px;
+                    border: none;
+                    background: var(--orange);
+                    color: var(--light);
+                    cursor: pointer;
+                    margin: 0;
+                  "
+                >
+                  Sair
+                </button>
+              </form>
+            </div>
           </div>
           <% } %>
         </div>
@@ -276,7 +308,7 @@ import="javax.servlet.http.HttpSession" %>
           <div class="big-cards__section">
             <div class="first-big__card">
               <div class="big-card__bg"></div>
-              <div style="padding: 30px">
+              <div style="padding: 30px"">
                 <h3
                   style="font-size: 26px; font-weight: 600; margin-bottom: 10px"
                 >
@@ -354,6 +386,7 @@ import="javax.servlet.http.HttpSession" %>
             </div>
           </div>
         </section>
+
         <div class="see-all__recipes">
           <a href="./recipes.jsp"><button>Veja todas as receitas</button></a>
         </div>
@@ -368,8 +401,61 @@ import="javax.servlet.http.HttpSession" %>
           <span id="disclaimer">Projeto desenvolvido sem fins lucrativos.</span>
         </div>
       </footer>
-    </div>
 
-    <script src="./script.js"></script>
+      <!-- MODAL -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Receita</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label">Nome da Receita</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label for="ingredientes" class="form-label">Ingredientes</label>
+                  <textarea class="form-control" id="ingredientes" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Tipo da Receita</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Tipo</option>
+                    <option value="1">Vegetariana</option>
+                    <option value="2">Vegana</option>
+                    <option value="3">Carne</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
+                  <input type="text" class="form-control">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Postar receita</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
