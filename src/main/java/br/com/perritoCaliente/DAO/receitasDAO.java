@@ -21,27 +21,28 @@ public class receitasDAO {
 
     public static int inserirReceita(Receita receita) {
         int idGerado = 0;
-        try (Connection connection = ConnectionPoolConfig.getConnection()) {
-            try (PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA)) {
-                preparedStatement.setString(1, receita.getNomeReceita());
-                preparedStatement.setString(2, receita.getModoPreparo());
-                int affectedRows = preparedStatement.executeUpdate();
-                if (affectedRows > 0) {
-                    try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()){
-//                        if (generatedKeys.next()) {
-                            idGerado = generatedKeys.getInt(0); //obtem o id gerado
-//                        }
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA, Statement.RETURN_GENERATED_KEYS)) {
+
+            preparedStatement.setString(1, receita.getNomeReceita());
+            preparedStatement.setString(2, receita.getModoPreparo());
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        idGerado = generatedKeys.getInt(1); // obtém o id gerado
                     }
-                    System.out.println("Receita adicionada com sucesso!");
-                } else {
-                    System.out.println("Falha ao adicionar a receita!");
                 }
+                System.out.println("Receita adicionada com sucesso!");
+            } else {
+                System.out.println("Falha ao adicionar a receita!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
         }
-        return idGerado; //
+        return idGerado;
     }
 
     public static void inserirImagem(ImagemReceita img, int idReceita) {
