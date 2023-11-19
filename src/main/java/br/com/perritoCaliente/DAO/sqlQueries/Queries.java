@@ -10,13 +10,15 @@ public class Queries {
             "INNER JOIN AVALIACOES ON RECEITAS.IDRECEITA = AVALIACOES.IDRECEITA" +
             " WHERE AVALIACAO >= 4 ORDER BY AVALIACAO DESC";
 
-    public static final String LISTAR_RECEITAS_CATEGORIAS = "SELECT * FROM Receitas WHERE IDCATEGORIAS = ?";
+    public static final String LISTAR_RECEITAS_CATEGORIAS = "SELECT * FROM RECEITAS WHERE IDCATEGORIAS = ?";
 
-    public static final String PESQUISAR_RECEITAS = "SELECT * FROM Receitas WHERE TITUTLO LIKE %?%"; //Não retorna pesquisas com erros de digitação e afins
+    public static final String PESQUISAR_RECEITAS = "SELECT * FROM RECEITAS WHERE TITUTLO LIKE %?%"; //Não retorna pesquisas com erros de digitação e afins
 
     public static final String INSERIR_IMAGEM = "INSERT INTO IMAGENSRECEITAS (IDRECEITA, IMAGEM) VALUES (?, ?)";
 
     public static final String  LISTAR_IMAGEM = "SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?";
+
+    public static final String INSERIR_INGREDIENTE = "INSERT INTO INGREDIENTES (IDRECEITA, NOMEINGREDIENTE) VALUES (?, ?)";
 
     //CATEGORIAS
     public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";

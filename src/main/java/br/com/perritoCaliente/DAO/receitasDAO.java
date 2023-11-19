@@ -1,6 +1,7 @@
 package br.com.perritoCaliente.DAO;
 
 import br.com.perritoCaliente.model.ImagemReceita;
+import br.com.perritoCaliente.model.Ingrediente;
 import br.com.perritoCaliente.model.Receita;
 import br.com.perritoCaliente.servlet.config.ConnectionPoolConfig;
 
@@ -48,7 +49,7 @@ public class receitasDAO {
     public static void inserirImagem(ImagemReceita img, int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_IMAGEM)) {
-                if (idReceita == 0){
+                if (idReceita != 0){
                     preparedStatement.setInt(1, idReceita);
                     preparedStatement.setString(2, img.getImagem());
                     int affectedRows = preparedStatement.executeUpdate();
@@ -59,6 +60,28 @@ public class receitasDAO {
                     }
                 } else {
                     System.out.printf("falha ao adicionar imagem");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void inserirIngrediente(Ingrediente ingrediente, int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_INGREDIENTE)) {
+                if (idReceita != 0){
+                    preparedStatement.setInt(1, idReceita);
+                    preparedStatement.setString(2, ingrediente.getNomeIngrediente());
+                    int affectedRows = preparedStatement.executeUpdate();
+                    if (affectedRows > 0) {
+                        System.out.println("Ingrediente adicionado com sucesso à receita com id: " + idReceita);
+                    } else {
+                        System.out.println("Falha ao adicionar ingrediente!");
+                    }
+                } else {
+                    System.out.printf("falha ao adicionar ingrediente");
                 }
             }
         } catch (SQLException e) {

@@ -20,6 +20,7 @@ public class LoginServlet extends HttpServlet {
         String senha = request.getParameter("senha");
 
         Usuario user = usuariosDAO.autenticaUsuario(usuario, senha);
+        //Talvez retornar o ID do usuario para ficar armazenado na sessão, útil na hora de deletar receitas baseado no id do usuario
 
         if(user != null) {
             HttpSession session = request.getSession();
