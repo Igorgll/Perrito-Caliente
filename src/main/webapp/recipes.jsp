@@ -31,13 +31,13 @@ import="javax.servlet.http.HttpSession" %>
             </a>
           </div>
         </a>
-          <ul class="nav-list" style="margin-bottom: 0;">
-            <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
-              ><li>Receitas</li></a
-            >
-            <li>Sobre nós</li>
-            <li>Contato</li>
-          </ul>
+        <ul class="nav-list" style="margin-bottom: 0">
+          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+            ><li>Receitas</li></a
+          >
+          <li>Sobre nós</li>
+          <li>Contato</li>
+        </ul>
         <div class="nav-buttons">
           <!-- Verificação de usuário na sessão -->
           <% HttpSession currentSession = request.getSession(false); Usuario
@@ -68,9 +68,14 @@ import="javax.servlet.http.HttpSession" %>
               gap: 20px;
             "
           >
-            <span style="color: #000"
-              >Bem-vindo, <%= usuarioLogado.getNome() %></span
+            <a
+              href="./userDashboard.jsp"
+              style="text-decoration: none; color: inherit"
             >
+              <span style="color: #000"
+                >Bem-vindo, <%= usuarioLogado.getNome() %></span
+              >
+            </a>
             <div
               style="
                 display: flex;
@@ -82,8 +87,9 @@ import="javax.servlet.http.HttpSession" %>
               <button
                 class="login-btn"
                 id="openModalBtn"
-                data-bs-toggle="modal" data-bs-target="#exampleModal"
-                >
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
                 Adicionar receita
               </button>
             </div>
@@ -116,7 +122,7 @@ import="javax.servlet.http.HttpSession" %>
       </div>
       <div class="index__content" style="padding: 20px 70px">
         <div class="categories__searchBar">
-          <select name="cars" id="cars" style="color: #7F8899;">
+          <select name="cars" id="cars" style="color: #7f8899">
             <option value="" hidden>Selecione uma categoria</option>
             <option value="Picanha">Picanha</option>
             <option value="Light">Light</option>
@@ -130,7 +136,9 @@ import="javax.servlet.http.HttpSession" %>
               id=""
               placeholder="Pesquise uma receita ou igrediente"
             />
-            <button id="search__button" style="height: 45px; width: 200px;">Pesquisar</button>
+            <button id="search__button" style="height: 45px; width: 200px">
+              Pesquisar
+            </button>
           </div>
         </div>
         <div class="all__recipes">
@@ -324,6 +332,99 @@ import="javax.servlet.http.HttpSession" %>
           <span id="disclaimer">Projeto desenvolvido sem fins lucrativos.</span>
         </div>
       </footer>
+
+      <!-- MODAL -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                Adicionar Receita
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInput" class="form-label"
+                    >Nome da Receita</label
+                  >
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Modo de Preparo</label
+                  >
+                  <input type="text" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label for="ingredientes" class="form-label"
+                    >Ingredientes</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="ingredientes"
+                    rows="5"
+                    placeholder="Digite os ingredientes, um por linha"
+                  ></textarea>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Tipo da Receita</label>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Tipo</option>
+                    <option value="1">Vegetariana</option>
+                    <option value="2">Vegana</option>
+                    <option value="3">Carne</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label"
+                    >Imagem da Receita</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="inputGroupFile"
+                    aria-describedby="inputGroupFileAddon"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label"
+                    >Link do vídeo da receita</label
+                  >
+                  <input type="text" class="form-control" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Postar receita
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
