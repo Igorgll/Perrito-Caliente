@@ -4,6 +4,7 @@
 @import url("./banner.css");
 @import url("./indexContent.css");
 @import url("./recipes.css");
+@import url("./userDashboard.css");
 
 :root {
   --light: #fefefe;

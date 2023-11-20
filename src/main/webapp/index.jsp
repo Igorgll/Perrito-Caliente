@@ -71,9 +71,11 @@ import="javax.servlet.http.HttpSession" %>
               gap: 20px;
             "
           >
+          <a href="./userDashboard.jsp" style="text-decoration: none; color: inherit">
             <span style="color: #000"
               >Bem-vindo, <%= usuarioLogado.getNome() %></span
             >
+          </a>
             <div
               style="
                 display: flex;
