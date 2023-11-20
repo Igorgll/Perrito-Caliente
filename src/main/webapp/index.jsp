@@ -317,9 +317,7 @@ import="javax.servlet.http.HttpSession" %>
                   Ratatouille Meal
                 </h3>
                 <p style="font-size: 18px; font-weight: 400">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
-                  necessitatibus adipisci.
+                  Ratatouille Meal: uma mistura requintada de vegetais frescos, oferecendo uma experiência culinária única e deliciosa. Sabores perfeitamente combinados para paladares exigentes.
                 </p>
               </div>
               <div
@@ -356,9 +354,7 @@ import="javax.servlet.http.HttpSession" %>
                   Feijoada
                 </h3>
                 <p style="font-size: 18px; font-weight: 400">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
-                  necessitatibus adipisci.
+                  Feijoada irresistível, com feijão preto, carne suculenta e ingredientes especiais. Um prato autêntico que proporciona uma explosão de sabores e tradição brasileira em cada garfada.
                 </p>
               </div>
               <div
@@ -437,6 +433,26 @@ import="javax.servlet.http.HttpSession" %>
                 </div>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
                   <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
                 </div>
                 <div class="mb-3">
