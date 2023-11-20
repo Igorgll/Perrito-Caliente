@@ -126,7 +126,7 @@ import="javax.servlet.http.HttpSession" %>
 
           <div class="description">
             <div class="description-content">
-                <h1 id="recipe-title">Perrito Caliente</h1>
+                <h1 id="recipe-title">Cachorro Quente</h1>
                 <div class="description-wrapper">
                     <div class="description-text">
                         <h2>Ingredientes</h2>
@@ -142,8 +142,29 @@ import="javax.servlet.http.HttpSession" %>
                         </div>
                     </div>
                     <div class="description-image">
+                        <div class="description-image-wrapper">
                         <img src="./styles/assets/cachorro_quente_gourmet.jpg" alt="Foto de cachorro quente">
+                        <div class="recipe-user-info">
+                            <div class="recipe-user-profile">
+                                <div class="recipe-user-profile-pic">
+                                    <img
+                                        id="recipe-profile__pic"
+                                        src="./styles/assets/profile.png"
+                                        alt="Foto da Ana de Armas"
+                                    />
+                                    <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
+                                </div>
+                                <div class="recipe-user-stars">
+                                    <img src="./styles/assets/star.png" alt="Star icon" />
+                                    <img src="./styles/assets/star.png" alt="Star icon" />
+                                    <img src="./styles/assets/star.png" alt="Star icon" />
+                                    <img src="./styles/assets/star.png" alt="Star icon" />
+                                    <img src="./styles/assets/star.png" alt="Star icon" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
           </div>
