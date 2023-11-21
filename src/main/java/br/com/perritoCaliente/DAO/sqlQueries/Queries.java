@@ -16,6 +16,8 @@ public class Queries {
 
     public static final String INSERIR_IMAGEM = "INSERT INTO IMAGENSRECEITAS (IDRECEITA, IMAGEM) VALUES (?, ?)";
 
+    public static final String INSERIR_VIDEO = "INSERT INTO VIDEOS (IDRECEITA, URLVIDEO) VALUES (?, ?)";
+
     public static final String  LISTAR_IMAGEM = "SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?";
 
     public static final String INSERIR_INGREDIENTE = "INSERT INTO INGREDIENTES (IDRECEITA, NOMEINGREDIENTE) VALUES (?, ?)";

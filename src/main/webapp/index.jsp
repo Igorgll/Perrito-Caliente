@@ -437,11 +437,11 @@ import="javax.servlet.http.HttpSession" %>
                 </div>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
-                  <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon">
+                  <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-video" id="recipe-video" value="${param.name}" class="form-control">
                 </div>
                 <div class="modal-footer">
                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

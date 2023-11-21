@@ -1,9 +1,6 @@
 package br.com.perritoCaliente.servlet;
-import br.com.perritoCaliente.model.ImagemReceita;
-import br.com.perritoCaliente.model.Ingrediente;
-import br.com.perritoCaliente.model.Receita;
+import br.com.perritoCaliente.model.*;
 import br.com.perritoCaliente.DAO.receitasDAO;
-import br.com.perritoCaliente.model.Usuario;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -38,6 +35,7 @@ public class CreateRecipesServlet extends HttpServlet {
         String recipeName = parameters.get("recipe-name");
         String recipePreparement = parameters.get("recipe-preparation");
         String recipeIngredient = parameters.get("recipe-ingredient");
+        String recipeVideoUrl = parameters.get("recipe-video");
         //recupera a imagem
         String image = parameters.get("image");
         //instancia uma receita e passa os parametros recuperados
@@ -46,10 +44,12 @@ public class CreateRecipesServlet extends HttpServlet {
         Ingrediente ingrediente = new Ingrediente(recipeIngredient);
         //instancia uma imagem e passa o parametro recuperado
         ImagemReceita img = new ImagemReceita(image);
+        //Instancia um video e passa o parametro recuperado
+        VideoReceita video = new VideoReceita(recipeVideoUrl);
         //executa a criação de receita
         if (usuarioLogado != null) {
             int idUsuario = usuarioLogado.getIdUsuario();
-            receitasDAO.criarReceita(idUsuario, receita, img, ingrediente);
+            receitasDAO.criarReceita(idUsuario, receita, img, ingrediente, video);
         }
 
         resp.sendRedirect("/find-all-recipes");

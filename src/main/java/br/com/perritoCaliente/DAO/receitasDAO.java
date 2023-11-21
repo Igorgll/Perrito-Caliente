@@ -3,6 +3,7 @@ package br.com.perritoCaliente.DAO;
 import br.com.perritoCaliente.model.ImagemReceita;
 import br.com.perritoCaliente.model.Ingrediente;
 import br.com.perritoCaliente.model.Receita;
+import br.com.perritoCaliente.model.VideoReceita;
 import br.com.perritoCaliente.servlet.config.ConnectionPoolConfig;
 
 import java.io.FileInputStream;
@@ -20,12 +21,13 @@ public class receitasDAO {
     private static final String USER = "sa";
     private static final String PASSWORD = "sa";
 
-    public static void criarReceita(int idUsuario, Receita receita, ImagemReceita img, Ingrediente ingrediente){
+    public static void criarReceita(int idUsuario, Receita receita, ImagemReceita img, Ingrediente ingrediente, VideoReceita video){
 
         int idReceita = inserirReceita(receita, idUsuario);
         if(idReceita != 0 && idUsuario != 0) {
             inserirIngrediente(ingrediente, idReceita);
             inserirImagem(img, idReceita);
+            inserirVideo(video, idReceita);
             System.out.println("Receita criada com sucesso!");
         }
         else {
@@ -74,6 +76,28 @@ public class receitasDAO {
                     }
                 } else {
                     System.out.printf("falha ao adicionar imagem");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public static void inserirVideo(VideoReceita video, int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_VIDEO)) {
+                if (idReceita != 0 && video != null){
+                    preparedStatement.setInt(1, idReceita);
+                    preparedStatement.setString(2, video.getVideo());
+                    int affectedRows = preparedStatement.executeUpdate();
+                    if (affectedRows > 0) {
+                        System.out.println("Video adicionado com sucesso a receita com id: " + idReceita);
+                    } else {
+                        System.out.println("O video não foi adicionado, valor nulo para video ou idReceita = 0!");
+                    }
+                } else {
+                    System.out.printf("falha ao adicionar video");
                 }
             }
         } catch (SQLException e) {
