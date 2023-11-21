@@ -5,7 +5,7 @@
 <body>
 <h2>Create Car</h2>
 
-<form action="/create-recipe" method="post" enctype="multipart/form-data">
+<form action="/create-recipeDeprecated" method="post" enctype="multipart/form-data">
 
     <div>
         <label>Crie sua receita</label>
