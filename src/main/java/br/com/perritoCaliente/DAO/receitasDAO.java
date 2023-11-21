@@ -20,13 +20,27 @@ public class receitasDAO {
     private static final String USER = "sa";
     private static final String PASSWORD = "sa";
 
-    public static int inserirReceita(Receita receita) {
+    public static void criarReceita(int idUsuario, Receita receita, ImagemReceita img, Ingrediente ingrediente){
+
+        int idReceita = inserirReceita(receita, idUsuario);
+        if(idReceita != 0 && idUsuario != 0) {
+            inserirIngrediente(ingrediente, idReceita);
+            inserirImagem(img, idReceita);
+            System.out.println("Receita criada com sucesso!");
+        }
+        else {
+            System.out.println("Falha ao criar receita");
+        }
+    }
+
+    public static int inserirReceita(Receita receita, int idUsuario) {
         int idGerado = 0;
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA, Statement.RETURN_GENERATED_KEYS)) {
 
-            preparedStatement.setString(1, receita.getNomeReceita());
-            preparedStatement.setString(2, receita.getModoPreparo());
+            preparedStatement.setInt(1, idUsuario);
+            preparedStatement.setString(2, receita.getNomeReceita());
+            preparedStatement.setString(3, receita.getModoPreparo());
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
@@ -35,9 +49,9 @@ public class receitasDAO {
                         idGerado = generatedKeys.getInt(1); // obtém o id gerado
                     }
                 }
-                System.out.println("Receita adicionada com sucesso!");
+                System.out.println("Nome e modo de preparo adicionados com sucesso!");
             } else {
-                System.out.println("Falha ao adicionar a receita!");
+                System.out.println("Falha ao adicionar o nome e modo de preparo!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,6 +133,7 @@ public class receitasDAO {
         }
     }
 
+    //Precisa de alterações
     public List<ImagemReceita> exibirImagem() {
         try (Connection connection = ConnectionPoolConfig.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_IMAGEM);
@@ -129,11 +144,10 @@ public class receitasDAO {
             List<ImagemReceita> imgArray = new ArrayList<>();
 
             while (resultSet.next()) {
-                int imgID = resultSet.getInt("idImagem");
-                String imgName = resultSet.getString("nomeArquivo");
+                //int imgID = resultSet.getInt("idImagem");
                 String imgFile = resultSet.getString("imagem");
 
-                ImagemReceita img = new ImagemReceita(imgName, imgFile, imgID);
+                ImagemReceita img = new ImagemReceita(imgFile);
                 imgArray.add(img);
             }
 

@@ -35,6 +35,18 @@ public class usuariosDAO {
         }
     }
 
+    public static int getUserID(PreparedStatement preparedStatement){
+        int idUser=0;
+        try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                idUser = generatedKeys.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return idUser;
+    }
+
     public static Usuario autenticaUsuario(String usuario, String senha) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(AUTENTICA_USUARIO)) {
@@ -44,7 +56,8 @@ public class usuariosDAO {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         System.out.println("Usuário autenticado: " + resultSet.getString("usuario"));
-                        return new Usuario(resultSet.getString("nome"), resultSet.getString("email"), resultSet.getString("usuario"), resultSet.getString("senha"));
+                        return new Usuario(resultSet.getString("nome"), resultSet.getString("email"), resultSet.getString("usuario"), resultSet.getString("senha"), resultSet.getInt("idUsuario"));
+                        //adicionei um getInt para pegar o id do usuario autenticado
                     }
                 }
             }

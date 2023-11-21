@@ -3,7 +3,7 @@ package br.com.perritoCaliente.DAO.sqlQueries;
 public class Queries {
 
     //RECEITAS
-    public static final String CRIA_RECEITA = "INSERT INTO RECEITAS (TITULO, MODOPREPARO) VALUES (?, ?)";
+    public static final String CRIA_RECEITA = "INSERT INTO RECEITAS (IDUSUARIO, TITULO, MODOPREPARO) VALUES (?, ?, ?)";
     public static final String LISTAR_RECEITAS = "SELECT * FROM RECEITAS";
 
     public static final String LISTAR_RECEITAS_POR_AVALIACAO = "SELECT RECEITAS.* FROM RECEITAS" +

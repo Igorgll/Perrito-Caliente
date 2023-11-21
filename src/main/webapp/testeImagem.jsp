@@ -11,6 +11,7 @@
         <label>Crie sua receita</label>
         <input type="text" name="recipe-name" id="recipe-name" value="${param.name}">
         <input type="text" name="recipe-preparation" id="recipe-preparation" value="${param.name}">
+        <input type="text" name="recipe-ingredient" id="recipe-ingredient" value="${param.name}">
     </div>
     <br>
     <div>

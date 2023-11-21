@@ -26,6 +26,8 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usuarioLogado", user);
             response.sendRedirect("index.jsp");
+
+            System.out.println(user.getIdUsuario());//print usado apenas para testar se retorna o id correto
         } else {
             System.out.println("Usuário ou senha inválidos. Tente novamente.");
             request.setAttribute("errorMessage", "Usuário ou senha inválidos. Tente novamente.");
