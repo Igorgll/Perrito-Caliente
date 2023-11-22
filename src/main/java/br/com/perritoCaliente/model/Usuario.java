@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Usuario {
 
-
     private int idUsuario;
     private String nome;
     private String usuario;
@@ -32,6 +31,10 @@ public class Usuario {
     public Usuario(int idUsuario, String nome) {
         this.idUsuario = idUsuario;
         this.nome = nome;
+    }
+
+    public Usuario(String usuario){
+        this.usuario = usuario;
     }
 
     public int getIdUsuario() {

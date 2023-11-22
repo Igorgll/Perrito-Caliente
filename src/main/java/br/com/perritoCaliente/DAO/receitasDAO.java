@@ -3,6 +3,7 @@ package br.com.perritoCaliente.DAO;
 import br.com.perritoCaliente.model.ImagemReceita;
 import br.com.perritoCaliente.model.Ingrediente;
 import br.com.perritoCaliente.model.Receita;
+import br.com.perritoCaliente.model.Usuario;
 import br.com.perritoCaliente.model.VideoReceita;
 import br.com.perritoCaliente.servlet.config.ConnectionPoolConfig;
 
@@ -140,9 +141,10 @@ public class receitasDAO {
             while (resultSet.next()) {
                 String recipeName = resultSet.getString("titulo");
                 String recipePreparement = resultSet.getString("modoPreparo");
-                int recipeId = resultSet.getInt("idReceita");
+                String userName = resultSet.getString("usuario");
 
-                Receita receita = new Receita(recipeName, recipePreparement);
+                Usuario usuario = new Usuario(userName);
+                Receita receita = new Receita(recipeName, recipePreparement, usuario);
                 recipes.add(receita);
             }
 

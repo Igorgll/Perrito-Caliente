@@ -6,6 +6,8 @@ public class Receita {
     private int idReceita;
     private String nomeReceita;
     private String modoPreparo;
+    private int idUsuario;
+    private Usuario usuario;
 
     public Receita(String nomeReceita, String modoPreparo) {
         this.nomeReceita = nomeReceita;
@@ -16,6 +18,12 @@ public class Receita {
         this.idReceita = idReceita;
         this.nomeReceita = nomeReceita;
         this.modoPreparo = modoPreparo;
+    }
+
+    public Receita(String nomeReceita, String modoPreparo, Usuario usuario) {
+        this.nomeReceita = nomeReceita;
+        this.modoPreparo = modoPreparo;
+        this.usuario = usuario;
     }
 
     public String getModoPreparo() {
@@ -40,6 +48,22 @@ public class Receita {
 
     public void setNomeReceita(String nomeReceita) {
         this.nomeReceita = nomeReceita;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

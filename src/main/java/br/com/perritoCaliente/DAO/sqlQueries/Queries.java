@@ -4,7 +4,7 @@ public class Queries {
 
     //RECEITAS
     public static final String CRIA_RECEITA = "INSERT INTO RECEITAS (IDUSUARIO, TITULO, MODOPREPARO) VALUES (?, ?, ?)";
-    public static final String LISTAR_RECEITAS = "SELECT * FROM RECEITAS";
+    public static final String LISTAR_RECEITAS = "SELECT r.*, u.usuario FROM RECEITAS r INNER JOIN USUARIOS u ON r.idUsuario = u.idUsuario";
 
     public static final String LISTAR_RECEITAS_POR_AVALIACAO = "SELECT RECEITAS.* FROM RECEITAS" +
             "INNER JOIN AVALIACOES ON RECEITAS.IDRECEITA = AVALIACOES.IDRECEITA" +
@@ -31,6 +31,8 @@ public class Queries {
     public static final String AUTENTICA_USUARIO = "SELECT * FROM USUARIOS WHERE USUARIO = ? AND SENHA = ?";
 
     public static final String LISTAR_USUARIOS = "SELECT * FROM Usuarios";
+
+    public static final String CONSULTA_USUARIO_POR_ID = "SELECT * FROM USUARIOS WHERE idUsuario = ?";
 
     public static final String DELETAR_USUARIO = "DELETE Usuario WHERE idUsuario = ?";
 
