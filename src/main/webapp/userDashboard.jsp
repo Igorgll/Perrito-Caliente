@@ -40,7 +40,7 @@
           </div>
         </a>
         <ul class="nav-list" style="margin-bottom: 0">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+          <a href="/find-all-recipes" style="text-decoration: none; color: inherit"
             ><li>Receitas</li></a
           >
           <li>Sobre nós</li>
@@ -167,7 +167,7 @@
                         <div class="custom-card__profile-pic">
                           <img
                             id="custom-profile__pic"
-                            src="./styles/assets/ana-de-armas-today-square-ak.jpg"
+                            src="./styles/assets/profile.png"
                             alt="Foto da Ana de Armas"
                           />
                           <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
