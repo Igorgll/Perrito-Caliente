@@ -3,7 +3,7 @@ package br.com.perritoCaliente.DAO.sqlQueries;
 public class Queries {
 
     //RECEITAS
-    public static final String CRIA_RECEITA = "INSERT INTO RECEITAS (TITULO, MODOPREPARO) VALUES (?, ?)";
+    public static final String CRIA_RECEITA = "INSERT INTO RECEITAS (IDUSUARIO, TITULO, MODOPREPARO) VALUES (?, ?, ?)";
     public static final String LISTAR_RECEITAS = "SELECT * FROM RECEITAS";
 
     public static final String LISTAR_RECEITAS_POR_AVALIACAO = "SELECT RECEITAS.* FROM RECEITAS" +
@@ -15,6 +15,8 @@ public class Queries {
     public static final String PESQUISAR_RECEITAS = "SELECT * FROM RECEITAS WHERE TITUTLO LIKE %?%"; //Não retorna pesquisas com erros de digitação e afins
 
     public static final String INSERIR_IMAGEM = "INSERT INTO IMAGENSRECEITAS (IDRECEITA, IMAGEM) VALUES (?, ?)";
+
+    public static final String INSERIR_VIDEO = "INSERT INTO VIDEOS (IDRECEITA, URLVIDEO) VALUES (?, ?)";
 
     public static final String  LISTAR_IMAGEM = "SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?";
 

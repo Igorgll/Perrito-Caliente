@@ -8,11 +8,18 @@ public class Usuario {
     private int idUsuario;
     private String nome;
     private String usuario;
-    private ArrayList<Usuario> usuarios;
     private String email;
     private String senhaUsuario;
 
     public Usuario(String nome, String usuario, String email, String senhaUsuario) {
+        this.nome = nome;
+        this.usuario = usuario;
+        this.email = email;
+        this.senhaUsuario = senhaUsuario;
+    }
+
+    public Usuario(String nome, String usuario, String email, String senhaUsuario, int idUsuario) {
+        this.idUsuario = idUsuario;
         this.nome = nome;
         this.usuario = usuario;
         this.email = email;
