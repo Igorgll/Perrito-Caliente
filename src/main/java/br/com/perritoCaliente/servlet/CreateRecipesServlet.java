@@ -1,6 +1,5 @@
 package br.com.perritoCaliente.servlet;
-import br.com.perritoCaliente.model.ImagemReceita;
-import br.com.perritoCaliente.model.Receita;
+import br.com.perritoCaliente.model.*;
 import br.com.perritoCaliente.DAO.receitasDAO;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
@@ -12,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
@@ -28,33 +28,29 @@ public class CreateRecipesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-
+        HttpSession session = req.getSession();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
         Map<String, String> parameters = uploadImage(req);
-        //recupear o id da receita
-        //int recipeId = Integer.parseInt(parameters.get("id"));
         //recupera o nome e modo de preparo
         String recipeName = parameters.get("recipe-name");
         String recipePreparement = parameters.get("recipe-preparation");
+        String recipeIngredient = parameters.get("recipe-ingredient");
+        String recipeVideoUrl = parameters.get("recipe-video");
         //recupera a imagem
         String image = parameters.get("image");
         //instancia uma receita e passa os parametros recuperados
         Receita receita = new Receita(recipeName, recipePreparement);
+        //instancia um ingrediente e passa os parametros recuperados
+        Ingrediente ingrediente = new Ingrediente(recipeIngredient);
         //instancia uma imagem e passa o parametro recuperado
         ImagemReceita img = new ImagemReceita(image);
+        //Instancia um video e passa o parametro recuperado
+        VideoReceita video = new VideoReceita(recipeVideoUrl);
         //executa a criação de receita
-        receitasDAO.inserirReceita(receita);
-        int receitaID = receitasDAO.inserirReceita(receita);
-        System.out.println(receitaID);
-        receitasDAO.inserirImagem(img, receitaID);
-        //verifica se o id passado pela pagina é igual a zero
-        /*if (recipeId == 0) {
-            int receitaID = receitasDAO.inserirReceita(receita);
-            receitasDAO.inserirImagem(img, receitaID);
+        if (usuarioLogado != null) {
+            int idUsuario = usuarioLogado.getIdUsuario();
+            receitasDAO.criarReceita(idUsuario, receita, img, ingrediente, video);
         }
-        //caso não seja inicia o modo de atualização
-        else {
-            receitasDAO.atualizarReceita(receita);
-        }*/
 
         resp.sendRedirect("/find-all-recipes");
     }

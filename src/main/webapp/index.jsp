@@ -410,18 +410,18 @@ import="javax.servlet.http.HttpSession" %>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="/create-recipe" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label for="exampleInput" class="form-label">Nome da Receita</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-name" id="recipe-name" value="${param.name}" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-preparation" id="recipe-preparation" value="${param.name}" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="ingredientes" class="form-label">Ingredientes</label>
-                  <textarea class="form-control" id="ingredientes" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
+                  <textarea class="form-control" name="recipe-ingredient" id="recipe-ingredient" value="${param.name}" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tipo da Receita</label>
@@ -434,7 +434,7 @@ import="javax.servlet.http.HttpSession" %>
                 </div>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                  <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
                 </div>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
@@ -458,14 +458,15 @@ import="javax.servlet.http.HttpSession" %>
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-video" id="recipe-video" value="${param.name}" class="form-control">
+                </div>
+                <div class="modal-footer">
+                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                 <button type="submit" class="btn btn-primary">Postar receita</button>
                 </div>
               </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Postar receita</button>
-            </div>
+
           </div>
         </div>
       </div>
