@@ -8,6 +8,7 @@ import="javax.servlet.http.HttpSession" %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página inicial</title>
+    <link rel="icon" href="./styles/assets/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/navbar.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
@@ -16,6 +17,12 @@ import="javax.servlet.http.HttpSession" %>
     <link rel="stylesheet" href="./styles/recipes.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -334,57 +341,30 @@ import="javax.servlet.http.HttpSession" %>
       </footer>
 
       <!-- MODAL -->
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Adicionar Receita
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Receita</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form>
                 <div class="mb-3">
-                  <label for="exampleInput" class="form-label"
-                    >Nome da Receita</label
-                  >
-                  <input type="text" class="form-control" />
+                  <label for="exampleInput" class="form-label">Nome da Receita</label>
+                  <input type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label"
-                    >Modo de Preparo</label
-                  >
-                  <input type="text" class="form-control" />
+                  <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
+                  <input type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                  <label for="ingredientes" class="form-label"
-                    >Ingredientes</label
-                  >
-                  <textarea
-                    class="form-control"
-                    id="ingredientes"
-                    rows="5"
-                    placeholder="Digite os ingredientes, um por linha"
-                  ></textarea>
+                  <label for="ingredientes" class="form-label">Ingredientes</label>
+                  <textarea class="form-control" id="ingredientes" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tipo da Receita</label>
-                  <select
-                    class="form-select"
-                    aria-label="Default select example"
-                  >
+                  <select class="form-select" aria-label="Default select example">
                     <option selected>Tipo</option>
                     <option value="1">Vegetariana</option>
                     <option value="2">Vegana</option>
@@ -392,39 +372,48 @@ import="javax.servlet.http.HttpSession" %>
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label"
-                    >Imagem da Receita</label
-                  >
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="inputGroupFile"
-                    aria-describedby="inputGroupFileAddon"
-                  />
+                  <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
                 </div>
                 <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label"
-                    >Link do vídeo da receita</label
-                  >
-                  <input type="text" class="form-control" />
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
+                  <input type="text" class="form-control">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-primary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Postar receita
-              </button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Postar receita</button>
             </div>
           </div>
         </div>
       </div>
+
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

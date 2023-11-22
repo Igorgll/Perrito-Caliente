@@ -8,6 +8,7 @@ import="javax.servlet.http.HttpSession" %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página inicial</title>
+    <link rel="icon" href="./styles/assets/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/navbar.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
@@ -317,9 +318,7 @@ import="javax.servlet.http.HttpSession" %>
                   Ratatouille Meal
                 </h3>
                 <p style="font-size: 18px; font-weight: 400">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
-                  necessitatibus adipisci.
+                  Ratatouille Meal: uma mistura requintada de vegetais frescos, oferecendo uma experiência culinária única e deliciosa. Sabores perfeitamente combinados para paladares exigentes.
                 </p>
               </div>
               <div
@@ -356,9 +355,7 @@ import="javax.servlet.http.HttpSession" %>
                   Feijoada
                 </h3>
                 <p style="font-size: 18px; font-weight: 400">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem
-                  aut fuga maiores, eveniet, fugit soluta rerum eum ipsum
-                  necessitatibus adipisci.
+                  Feijoada irresistível, com feijão preto, carne suculenta e ingredientes especiais. Um prato autêntico que proporciona uma explosão de sabores e tradição brasileira em cada garfada.
                 </p>
               </div>
               <div
@@ -438,6 +435,26 @@ import="javax.servlet.http.HttpSession" %>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
                   <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                </div>
+                <div class="mb-3">
+                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
+                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>

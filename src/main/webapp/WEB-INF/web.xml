@@ -10,6 +10,13 @@
     <listener-class>org.h2.server.web.DbStarter</listener-class>
   </listener>
 
+  <jsp-config>
+    <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <page-encoding>UTF-8</page-encoding>
+    </jsp-property-group>
+  </jsp-config>
+
   <servlet>
     <servlet-name>H2Console</servlet-name>
     <servlet-class>org.h2.server.web.WebServlet</servlet-class>
