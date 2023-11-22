@@ -22,6 +22,11 @@ public class Queries {
 
     public static final String INSERIR_INGREDIENTE = "INSERT INTO INGREDIENTES (IDRECEITA, NOMEINGREDIENTE) VALUES (?, ?)";
 
+    public static final String OBTER_RECEITAS_DO_USUARIO_POR_ID = 
+    "SELECT r.idReceita, r.titulo, r.modoPreparo " +
+    "FROM Receitas r " +
+    "WHERE r.idUsuario = ?";
+
     //CATEGORIAS
     public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";
 

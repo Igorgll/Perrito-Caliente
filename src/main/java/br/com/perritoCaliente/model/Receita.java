@@ -1,7 +1,5 @@
 package br.com.perritoCaliente.model;
 
-import java.util.ArrayList;
-
 public class Receita {
     private int idReceita;
     private String nomeReceita;
@@ -21,6 +19,13 @@ public class Receita {
     }
 
     public Receita(String nomeReceita, String modoPreparo, Usuario usuario) {
+        this.nomeReceita = nomeReceita;
+        this.modoPreparo = modoPreparo;
+        this.usuario = usuario;
+    }
+
+    public Receita(int idReceita, String nomeReceita, String modoPreparo, Usuario usuario) {
+        this.idReceita = idReceita;
         this.nomeReceita = nomeReceita;
         this.modoPreparo = modoPreparo;
         this.usuario = usuario;

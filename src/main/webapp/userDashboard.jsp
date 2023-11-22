@@ -1,6 +1,9 @@
-<%@ page contentType="text/html; charset=UTF-8" %> <%@ page
-import="br.com.perritoCaliente.model.Usuario" %> <%@ page
-import="javax.servlet.http.HttpSession" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="br.com.perritoCaliente.model.Receita" %>
+<%@ page import="br.com.perritoCaliente.model.Usuario" %>
+<%@ page import="java.util.List" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -156,6 +159,8 @@ import="javax.servlet.http.HttpSession" %>
                 <h2>Minha receitas</h2>
               </div>
               <div class="my-recipes-content">
+                <c:if test="${not empty receitasDoUsuario}">
+                <c:forEach var="receita" items="${receitasDoUsuario}">
                 <div class="custom-recipe__card" style="max-width: 400px">
                     <div class="custom-card__background">
                       <div class="custom-card__profile">
@@ -181,146 +186,16 @@ import="javax.servlet.http.HttpSession" %>
                       />
                     </div>
                     <div class="custom-card__description">
-                      <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
+                            <p>${receita.getNomeReceita()}</p>
                         <div class="custom-card__buttons">
                             <button>Editar</button>
                             <button>Excluir</button>
                         </div>
                     </div>
                   </div>
-                  <div class="custom-recipe__card" style="max-width: 400px">
-                    <div class="custom-card__background">
-                      <div class="custom-card__profile">
-                        <div class="custom-card__profile-pic">
-                          <img
-                            id="custom-profile__pic"
-                            src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                            alt="Foto da Ana de Armas"
-                          />
-                          <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
-
-                        </div>
-                        <div class="custom-card__stars">
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                        </div>
-                      </div>
-                      <img
-                        src="./styles/assets/cuzcuz.png"
-                        alt="Image do Cuzcuz Paulista"
-                      />
-                    </div>
-                    <div class="custom-card__description">
-                      <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-                        <div class="custom-card__buttons">
-                            <button>Editar</button>
-                            <button>Excluir</button>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="custom-recipe__card" style="max-width: 400px">
-                    <div class="custom-card__background">
-                      <div class="custom-card__profile">
-                        <div class="custom-card__profile-pic">
-                          <img
-                            id="custom-profile__pic"
-                            src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                            alt="Foto da Ana de Armas"
-                          />
-                          <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
-
-                        </div>
-                        <div class="custom-card__stars">
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                        </div>
-                      </div>
-                      <img
-                        src="./styles/assets/cuzcuz.png"
-                        alt="Image do Cuzcuz Paulista"
-                      />
-                    </div>
-                    <div class="custom-card__description">
-                      <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-                        <div class="custom-card__buttons">
-                            <button>Editar</button>
-                            <button>Excluir</button>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="custom-recipe__card" style="max-width: 400px">
-                    <div class="custom-card__background">
-                      <div class="custom-card__profile">
-                        <div class="custom-card__profile-pic">
-                          <img
-                            id="custom-profile__pic"
-                            src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                            alt="Foto da Ana de Armas"
-                          />
-                          <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
-
-                        </div>
-                        <div class="custom-card__stars">
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                        </div>
-                      </div>
-                      <img
-                        src="./styles/assets/cuzcuz.png"
-                        alt="Image do Cuzcuz Paulista"
-                      />
-                    </div>
-                    <div class="custom-card__description">
-                      <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-                        <div class="custom-card__buttons">
-                            <button>Editar</button>
-                            <button>Excluir</button>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="custom-recipe__card" style="max-width: 400px">
-                    <div class="custom-card__background">
-                      <div class="custom-card__profile">
-                        <div class="custom-card__profile-pic">
-                          <img
-                            id="custom-profile__pic"
-                            src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                            alt="Foto da Ana de Armas"
-                          />
-                          <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
-
-                        </div>
-                        <div class="custom-card__stars">
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                          <img src="./styles/assets/star.png" alt="Star icon" />
-                        </div>
-                      </div>
-                      <img
-                        src="./styles/assets/cuzcuz.png"
-                        alt="Image do Cuzcuz Paulista"
-                      />
-                    </div>
-                    <div class="custom-card__description">
-                      <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-                        <div class="custom-card__buttons">
-                            <button>Editar</button>
-                            <button>Excluir</button>
-                        </div>
-                    </div>
-                  </div>
-                </div>
+                </c:forEach>
+              </c:if>  
+              </div>
               </div>
             </div>
           </div>

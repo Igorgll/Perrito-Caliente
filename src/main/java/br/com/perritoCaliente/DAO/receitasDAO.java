@@ -159,6 +159,42 @@ public class receitasDAO {
         }
     }
 
+    public static List<Receita> obterReceitasDoUsuarioPorId(int idUsuario) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITAS_DO_USUARIO_POR_ID)) {
+    
+            preparedStatement.setInt(1, idUsuario);
+    
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                List<Receita> receitasDoUsuario = new ArrayList<>();
+    
+                while (resultSet.next()) {
+                    int idReceita = resultSet.getInt("idReceita");
+                    String nomeReceita = resultSet.getString("titulo");
+                    String modoPreparo = resultSet.getString("modoPreparo");
+    
+                    Usuario usuario = new Usuario(); 
+                    usuario.setIdUsuario(idUsuario);
+
+                    Receita receita = new Receita(idReceita, nomeReceita, modoPreparo, usuario);
+                    receitasDoUsuario.add(receita);
+                }
+    
+                return receitasDoUsuario;
+    
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Falha ao obter receitas do usuário por ID: " + e.getMessage());
+                return Collections.emptyList();
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+            return Collections.emptyList();
+        }
+    }
+
     //Precisa de alterações
     public List<ImagemReceita> exibirImagem() {
         try (Connection connection = ConnectionPoolConfig.getConnection();
