@@ -131,31 +131,25 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           <% } %>
         </div>
       </nav>
-      <div class="banner" style="height: 390px">
+      <div class="banner" style="height: 450px">
         <h1>Confira todas receitas</h1>
-      </div>
-      <div class="index__content" style="padding: 20px 70px">
         <div class="categories__searchBar">
-          <select name="cars" id="cars" style="color: #7f8899">
-            <option value="" hidden>Selecione uma categoria</option>
-            <option value="Picanha">Picanha</option>
-            <option value="Light">Light</option>
-            <option value="Doces">Doces</option>
-            <option value="Petiscos">Petiscos</option>
-          </select>
-          <div class="search-input_wrapper">
+          <div class="search-input_wrapper" style="margin: auto; width: 705px; margin-top: 20px;">
             <input
               type="text"
               name=""
               id=""
               placeholder="Pesquise uma receita ou igrediente"
             />
-            <button id="search__button" style="height: 45px; width: 200px">
+            <button id="search__button" style="height: 45px; width: 140px">
               Pesquisar
             </button>
           </div>
         </div>
-        <div class="all__recipes">
+      </div>
+      <div class="index__content" style="padding: 20px 70px">
+        <h2 style="font-size: 38px; margin-top: 10px;">Receitas</h2>
+        <div class="all__recipes" style="margin-top: 30px;">
           <ul
             style="
               display: grid;
