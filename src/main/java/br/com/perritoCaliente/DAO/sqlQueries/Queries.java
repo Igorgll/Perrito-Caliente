@@ -42,5 +42,8 @@ public class Queries {
     public static final String DELETAR_USUARIO = "DELETE Usuario WHERE idUsuario = ?";
 
     public static final String DELETAR_RECEITA = "DELETE Receitas WHERE idReceita = ?";
+
+    public static final String DELETAR_INGREDIENTES_POR_RECEITA = "DELETE FROM RECEITAS WHERE IDRECEITA = ?";
+    
     public static final String ATUALIZAR_RECEITA = "UPDATE Receitas SET titulo = ?, modoPreparo = ? WHERE idReceita = ?";
 }

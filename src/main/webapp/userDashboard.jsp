@@ -188,10 +188,14 @@
                     <div class="custom-card__description">
                             <p>${receita.getNomeReceita()}</p>
                         <div class="custom-card__buttons">
-                        <form action="delete-recipe" method="POST">
-                            <button>Editar</button> <!--Tem que adicionar um link ao inves de um botão que redireciona para uma pagina contendo um form de edição-->
-                            <input type="hidden" name="idReceita" value="${receita.getIdReceita()}">
-                            <button type="submit">Excluir</button>
+                        <button>Editar</button> <!--Tem que adicionar um link ao inves de um botão que redireciona para uma pagina contendo um form de edição-->
+                        <form  action="delete-recipe" method="POST">
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="idReceita" value="${receita.getIdReceita()}">
+                          <button style="margin: 0; width: 100%; height: 100%; border: none; color: #FFFFFF; background-color: red; transition: none;" type="submit">
+                            Excluir
+                          </button>
+                        </form>
                         </div>
                     </div>
                   </div>

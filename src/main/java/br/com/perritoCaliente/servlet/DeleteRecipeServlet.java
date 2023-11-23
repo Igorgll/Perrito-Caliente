@@ -12,13 +12,20 @@ public class DeleteRecipeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("Recebendo solicitação de exclusão...");
 
-        String recipeIdString = req.getParameter("idReceita");
-        int  recipeIdInt = Integer.parseInt(recipeIdString);
-        new receitasDAO().deletarReceitaPorId(recipeIdInt);
+        if ("DELETE".equals(req.getParameter("_method"))) {
+            String recipeIdString = req.getParameter("idReceita");
+            int recipeIdInt = Integer.parseInt(recipeIdString);
+            System.out.println("ID da Receita a ser excluída: " + recipeIdInt); 
 
-        resp.sendRedirect("/find-all-recipes");
+            new receitasDAO().deletarReceitaPorId(recipeIdInt);
 
+            resp.sendRedirect("/find-all-recipes");
+        } else {
+            System.out.println("Método não permitido.");
+            resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Método não permitido");
+        }
     }
 
 }
