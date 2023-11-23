@@ -34,7 +34,7 @@ CREATE TABLE Ingredientes (
     idIngrediente INT AUTO_INCREMENT PRIMARY KEY,
     idReceita INT,
     nomeIngrediente VARCHAR(255) NOT NULL,
-    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita)
+    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita) ON DELETE CASCADE
 );
 
 CREATE TABLE Avaliacoes (
@@ -42,7 +42,7 @@ CREATE TABLE Avaliacoes (
     idUsuario INT,
     idReceita INT,
     avaliacao DECIMAL(3, 2) NOT NULL,
-    FOREIGN KEY (idUsuario) REFERENCES Usuarios (idUsuario),
+    FOREIGN KEY (idUsuario) REFERENCES Usuarios (idUsuario) ON DELETE CASCADE,
     FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita)
 );
 
@@ -51,7 +51,7 @@ CREATE TABLE Comentarios (
     idReceita INT,
     idUsuario INT,
     textoComentario TEXT NOT NULL,
-    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita),
+    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita) ON DELETE CASCADE,
     FOREIGN KEY (idUsuario) REFERENCES Usuarios (idUsuario)
 );
 
@@ -59,21 +59,21 @@ CREATE TABLE ImagensReceitas (
     idImagem INT AUTO_INCREMENT PRIMARY KEY,
     idReceita INT,
     imagem VARCHAR(255) NOT NULL,
-    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita)
+    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita) ON DELETE CASCADE
 );
 
 CREATE TABLE Videos (
     idVideo INT AUTO_INCREMENT PRIMARY KEY,
     idReceita INT,
     urlVideo VARCHAR(255) NOT NULL,
-    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita)
+    FOREIGN KEY (idReceita) REFERENCES Receitas (idReceita) ON DELETE CASCADE
 );
 
 INSERT INTO USUARIOS(NOME, EMAIL, USUARIO, SENHA) VALUES('iGOR', 'IGAO@GMAIL.COM', 'IGAOGL' ,'123456');
 
 INSERT INTO CATEGORIASRECEITAS(IDCATEGORIA, NOMECATEGORIA) VALUES(1, 'VEGETARIANO');
 
-INSERT INTO RECEITAS(IDRECEITA, IDUSUARIO, IDCATEGORIA, TITULO, MODOPREPARO) VALUES(1, 1, 1, 'Salada Francesa', 'Só misturar um monte de folhas');
+-- INSERT INTO RECEITAS(IDRECEITA, IDUSUARIO, IDCATEGORIA, TITULO, MODOPREPARO) VALUES(1, 1, 1, 'Salada Francesa', 'Só misturar um monte de folhas');
 
 INSERT INTO AVALIACOES (IDAVALIACAO, IDUSUARIO, IDRECEITA, AVALIACAO) VALUES (1, 1, 1, 4);
 

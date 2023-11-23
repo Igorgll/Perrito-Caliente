@@ -47,6 +47,30 @@ public class usuariosDAO {
         return idUser;
     }
 
+    public static Usuario getUsuarioById(int idUsuario) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(CONSULTA_USUARIO_POR_ID)) {
+    
+            preparedStatement.setInt(1, idUsuario);
+    
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String nome = resultSet.getString("nome");
+                    String email = resultSet.getString("email");
+                    String usuario = resultSet.getString("usuario");
+                    String senhaUsuario = resultSet.getString("senha");
+    
+                    System.out.print(usuario);
+                    return new Usuario(nome, usuario, email, senhaUsuario, idUsuario);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao obter usuário por ID", e);
+        }
+    
+        return null;
+    }
+
     public static Usuario autenticaUsuario(String usuario, String senha) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(AUTENTICA_USUARIO)) {

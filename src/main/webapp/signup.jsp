@@ -28,7 +28,7 @@
           </div>
         </a>
         <ul class="nav-list" style="margin-bottom: 0;">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+          <a href="/find-all-recipes" style="text-decoration: none; color: inherit"
             ><li>Receitas</li></a
           >
           <li>Sobre nós</li>

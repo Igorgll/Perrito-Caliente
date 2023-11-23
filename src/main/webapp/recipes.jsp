@@ -1,6 +1,9 @@
- <%@ page contentType="text/html; charset=UTF-8" %> <%@ page
+<%@ page contentType="text/html; charset=UTF-8" %> <%@ page
 import="br.com.perritoCaliente.model.Usuario" %> <%@ page
-import="javax.servlet.http.HttpSession" %>
+import="javax.servlet.http.HttpSession" %> <%@ page
+import="br.com.perritoCaliente.model.Receita" %> <%@ page
+import="java.util.List" %> <%@ page import="java.util.ArrayList" %> <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -8,7 +11,11 @@ import="javax.servlet.http.HttpSession" %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Página inicial</title>
-    <link rel="icon" href="./styles/assets/favicon-32x32.png" type="image/x-icon">
+    <link
+      rel="icon"
+      href="./styles/assets/favicon-32x32.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/navbar.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
@@ -158,174 +165,36 @@ import="javax.servlet.http.HttpSession" %>
               padding: 20px 0 40px 0;
             "
           >
-            <li class="recipe__card">
-              <div class="card__background">
-                <div class="card__profile">
-                  <div class="card__profile-pic">
-                    <img
-                      id="profile__pic"
-                      src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                      alt="Foto da Ana de Armas"
-                    />
-                    <span>Ana de Armas</span>
+            <c:forEach var="receita" items="${receitas}">
+              <li class="recipe__card">
+                <div class="card__background">
+                  <div class="card__profile">
+                    <div class="card__profile-pic">
+                      <img
+                        id="profile__pic"
+                        src="./styles/assets/profile.png"
+                        alt="Foto do Ana de Armas"
+                      />
+                      <span>${receita.usuario.usuario}</span>
+                    </div>
+                    <div class="card__stars">
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                      <img src="./styles/assets/star.png" alt="Star icon" />
+                    </div>
                   </div>
-                  <div class="card__stars">
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                  </div>
+                  <img
+                    src="./styles/assets/cuzcuz.png"
+                    alt="Image do Cuzcuz Paulista"
+                  />
                 </div>
-                <img
-                  src="./styles/assets/cuzcuz.png"
-                  alt="Image do Cuzcuz Paulista"
-                />
-              </div>
-              <div class="card__description">
-                <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-              </div>
-            </li>
-            <li class="recipe__card">
-              <div class="card__background">
-                <div class="card__profile">
-                  <div class="card__profile-pic">
-                    <img
-                      id="profile__pic"
-                      src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                      alt="Foto da Ana de Armas"
-                    />
-                    <span>Ana de Armas</span>
-                  </div>
-                  <div class="card__stars">
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                  </div>
+                <div class="card__description">
+                  <p>${receita.getNomeReceita()}</p>
                 </div>
-                <img
-                  src="./styles/assets/cuzcuz.png"
-                  alt="Image do Cuzcuz Paulista"
-                />
-              </div>
-              <div class="card__description">
-                <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-              </div>
-            </li>
-            <li class="recipe__card">
-              <div class="card__background">
-                <div class="card__profile">
-                  <div class="card__profile-pic">
-                    <img
-                      id="profile__pic"
-                      src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                      alt="Foto da Ana de Armas"
-                    />
-                    <span>Ana de Armas</span>
-                  </div>
-                  <div class="card__stars">
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                  </div>
-                </div>
-                <img
-                  src="./styles/assets/cuzcuz.png"
-                  alt="Image do Cuzcuz Paulista"
-                />
-              </div>
-              <div class="card__description">
-                <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-              </div>
-            </li>
-            <li class="recipe__card">
-              <div class="card__background">
-                <div class="card__profile">
-                  <div class="card__profile-pic">
-                    <img
-                      id="profile__pic"
-                      src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                      alt="Foto da Ana de Armas"
-                    />
-                    <span>Ana de Armas</span>
-                  </div>
-                  <div class="card__stars">
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                  </div>
-                </div>
-                <img
-                  src="./styles/assets/cuzcuz.png"
-                  alt="Image do Cuzcuz Paulista"
-                />
-              </div>
-              <div class="card__description">
-                <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-              </div>
-            </li>
-            <li class="recipe__card">
-              <div class="card__background">
-                <div class="card__profile">
-                  <div class="card__profile-pic">
-                    <img
-                      id="profile__pic"
-                      src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                      alt="Foto da Ana de Armas"
-                    />
-                    <span>Ana de Armas</span>
-                  </div>
-                  <div class="card__stars">
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                  </div>
-                </div>
-                <img
-                  src="./styles/assets/cuzcuz.png"
-                  alt="Image do Cuzcuz Paulista"
-                />
-              </div>
-              <div class="card__description">
-                <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-              </div>
-            </li>
-            <li class="recipe__card">
-              <div class="card__background">
-                <div class="card__profile">
-                  <div class="card__profile-pic">
-                    <img
-                      id="profile__pic"
-                      src="./styles/assets/ana-de-armas-today-square-ak.jpg"
-                      alt="Foto da Ana de Armas"
-                    />
-                    <span>Ana de Armas</span>
-                  </div>
-                  <div class="card__stars">
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                    <img src="./styles/assets/star.png" alt="Star icon" />
-                  </div>
-                </div>
-                <img
-                  src="./styles/assets/cuzcuz.png"
-                  alt="Image do Cuzcuz Paulista"
-                />
-              </div>
-              <div class="card__description">
-                <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
-              </div>
-            </li>
+              </li>
+            </c:forEach>
           </ul>
         </div>
       </div>
@@ -349,18 +218,18 @@ import="javax.servlet.http.HttpSession" %>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="/create-recipe" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                   <label for="exampleInput" class="form-label">Nome da Receita</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-name" id="recipe-name" value="${param.name}" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-preparation" id="recipe-preparation" value="${param.name}" class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="ingredientes" class="form-label">Ingredientes</label>
-                  <textarea class="form-control" id="ingredientes" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
+                  <textarea class="form-control" name="recipe-ingredient" id="recipe-ingredient" value="${param.name}" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Tipo da Receita</label>
@@ -373,7 +242,7 @@ import="javax.servlet.http.HttpSession" %>
                 </div>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
+                  <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
                 </div>
                 <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
@@ -397,18 +266,18 @@ import="javax.servlet.http.HttpSession" %>
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
-                  <input type="text" class="form-control">
+                  <input type="text" name="recipe-video" id="recipe-video" value="${param.name}" class="form-control">
+                </div>
+                <div class="modal-footer">
+                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                 <button type="submit" class="btn btn-primary">Postar receita</button>
                 </div>
               </form>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Postar receita</button>
-            </div>
+
           </div>
         </div>
       </div>
-
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
