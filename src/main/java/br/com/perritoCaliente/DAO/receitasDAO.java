@@ -278,7 +278,7 @@ public class receitasDAO {
         }
     }
 
-    public Receita getReceitaById(int idReceita) {
+    public static Receita getReceitaById(int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITA_POR_ID)) {
 
@@ -311,7 +311,7 @@ public class receitasDAO {
         return null;
     }
 
-    private List<Ingrediente> getIngredientesByReceitaId(int idReceita) {
+    private static List<Ingrediente> getIngredientesByReceitaId(int idReceita) {
         List<Ingrediente> ingredientes = new ArrayList<>();
 
         try (Connection connection = ConnectionPoolConfig.getConnection();
@@ -336,7 +336,7 @@ public class receitasDAO {
         return ingredientes;
     }
 
-    public String getVideoReceitaUrlById(int idReceita) {
+    public static String getVideoReceitaUrlById(int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(OBTER_URL_VIDEO_POR_RECEITA_ID)) {
 
