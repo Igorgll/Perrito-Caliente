@@ -183,8 +183,10 @@ import="javax.servlet.http.HttpSession" %>
                     <div class="custom-card__description">
                       <p>Cuzcuz Paulista com tomate, ovo, azeitonas...</p>
                         <div class="custom-card__buttons">
-                            <button>Editar</button>
-                            <button>Excluir</button>
+                        <form action="delete-recipe" method="POST">
+                            <button>Editar</button> <!--Tem que adicionar um link ao inves de um botão que redireciona para uma pagina contendo um form de edição-->
+                            <input type="hidden" name="idReceita" value="${receita.getIdReceita()}">
+                            <button type="submit">Excluir</button>
                         </div>
                     </div>
                   </div>
