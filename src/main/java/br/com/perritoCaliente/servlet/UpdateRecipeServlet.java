@@ -17,6 +17,7 @@ public class UpdateRecipeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
         String nomeReceita = request.getParameter("recipe-name");
         String modoPreparo = request.getParameter("recipe-preparation");

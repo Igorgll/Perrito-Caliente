@@ -13,6 +13,7 @@ public class DeleteRecipeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         System.out.println("Recebendo solicitação de exclusão...");
 
         if ("DELETE".equals(req.getParameter("_method"))) {
