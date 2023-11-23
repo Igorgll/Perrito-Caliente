@@ -1,6 +1,22 @@
-<%@ page contentType="text/html; charset=UTF-8" %> <%@ page
-import="br.com.perritoCaliente.model.Usuario" %> <%@ page
-import="javax.servlet.http.HttpSession" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="br.com.perritoCaliente.model.Receita" %>
+<%@ page import="br.com.perritoCaliente.model.Usuario" %>
+<%@ page import="br.com.perritoCaliente.model.Ingrediente" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="br.com.perritoCaliente.DAO.receitasDAO" %>
+<%@ page import="br.com.perritoCaliente.DAO.usuariosDAO" %>
+
+<%
+    int idReceita = Integer.parseInt(request.getAttribute("idReceita").toString());
+
+    Receita receita = new receitasDAO().getReceitaById(idReceita);
+    
+    Usuario usuario = usuariosDAO.getUsuarioById(receita.getIdUsuario());
+
+    request.setAttribute("receita", receita);
+    request.setAttribute("usuario", usuario);
+%>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -126,24 +142,31 @@ import="javax.servlet.http.HttpSession" %>
 
           <div class="description">
             <div class="description-content">
-                <h1 id="recipe-title">Cachorro Quente</h1>
+                <h1 id="recipe-title"><%= receita.getNomeReceita() %></h1>
                 <div class="description-wrapper">
                     <div class="description-text">
                         <h2>Ingredientes</h2>
                         <ul>
-                            <li>Pão</li>
-                            <li>Salsicha</li>
-                            <li>Mostarda</li>
-                            <li>Ketchup</li>
+                          <% if (receita.getIngredientes() != null) { %>
+                              <% for (Ingrediente ingrediente : receita.getIngredientes()) { %>
+                                  <li><%= ingrediente.getNomeIngrediente() %></li>
+                              <% } %>
+                          <% } else { %>
+                              <li>Nenhum ingrediente disponível</li>
+                          <% } %>
                         </ul>
                         <div style="margin-top: 40px;">
                             <h2>Modo de Preparo</h2>
-                            <p>Em uma panela, refogue dentes de alho picados e cebola picada em um fio de azeite. Em seguida, adicione meio pimentão verde em tiras, sal a gosto e cheiro-verde a gosto. Misture. Depois, acrescente gramas de molho de tomate e quilo de salsicha. Deixe cozinhar por 10 minutos. Corte o pão e espalhe maionese, o molho e acrescente a salsicha. Finalize com ketchup, mostarda e batata palha a gosto.</p>
+                            <p><%= receita.getModoPreparo() %></p>
                         </div>
+                        <div style="margin-top: 40px;" class="video-container">
+                          <h2>Tutorial no Youtube</h2>
+                          <a href="<%= receita.getUrlVideo() %>" target="_blank" style="color: #000;"><%= receita.getUrlVideo() %></a>
+                      </div>
                     </div>
                     <div class="description-image">
                         <div class="description-image-wrapper">
-                        <img src="./styles/assets/cachorro_quente_gourmet.jpg" alt="Foto de cachorro quente">
+                        <img src="<%= receita.getCaminhoImagem() %>" alt="Foto da receita">
                         <div class="recipe-user-info">
                             <div class="recipe-user-profile">
                                 <div class="recipe-user-profile-pic">
@@ -152,7 +175,7 @@ import="javax.servlet.http.HttpSession" %>
                                         src="./styles/assets/profile.png"
                                         alt="Foto da Ana de Armas"
                                     />
-                                    <span class="limited-text"><%= usuarioLogado.getEmail() %></span>
+                                    <span class="limited-text"><%= receita.getUsuario().getUsuario() %></span>
                                 </div>
                                 <div class="recipe-user-stars">
                                     <img src="./styles/assets/star.png" alt="Star icon" />

@@ -22,16 +22,16 @@ public class receitasDAO {
     private static final String USER = "sa";
     private static final String PASSWORD = "sa";
 
-    public static void criarReceita(int idUsuario, Receita receita, ImagemReceita img, Ingrediente ingrediente, VideoReceita video){
+    public static void criarReceita(int idUsuario, Receita receita, ImagemReceita img, Ingrediente ingrediente,
+            VideoReceita video) {
 
         int idReceita = inserirReceita(receita, idUsuario);
-        if(idReceita != 0 && idUsuario != 0) {
+        if (idReceita != 0 && idUsuario != 0) {
             inserirIngrediente(ingrediente, idReceita);
             inserirImagem(img, idReceita);
             inserirVideo(video, idReceita);
             System.out.println("Receita criada com sucesso!");
-        }
-        else {
+        } else {
             System.out.println("Falha ao criar receita");
         }
     }
@@ -39,7 +39,8 @@ public class receitasDAO {
     public static int inserirReceita(Receita receita, int idUsuario) {
         int idGerado = 0;
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA, Statement.RETURN_GENERATED_KEYS)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(CRIA_RECEITA,
+                        Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setInt(1, idUsuario);
             preparedStatement.setString(2, receita.getNomeReceita());
@@ -66,7 +67,7 @@ public class receitasDAO {
     public static void inserirImagem(ImagemReceita img, int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_IMAGEM)) {
-                if (idReceita != 0){
+                if (idReceita != 0) {
                     preparedStatement.setInt(1, idReceita);
                     preparedStatement.setString(2, img.getImagem());
                     int affectedRows = preparedStatement.executeUpdate();
@@ -88,7 +89,7 @@ public class receitasDAO {
     public static void inserirVideo(VideoReceita video, int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_VIDEO)) {
-                if (idReceita != 0 && video != null){
+                if (idReceita != 0 && video != null) {
                     preparedStatement.setInt(1, idReceita);
                     preparedStatement.setString(2, video.getVideo());
                     int affectedRows = preparedStatement.executeUpdate();
@@ -110,7 +111,7 @@ public class receitasDAO {
     public static void inserirIngrediente(Ingrediente ingrediente, int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection()) {
             try (PreparedStatement preparedStatement = connection.prepareStatement(INSERIR_INGREDIENTE)) {
-                if (idReceita != 0){
+                if (idReceita != 0) {
                     preparedStatement.setInt(1, idReceita);
                     preparedStatement.setString(2, ingrediente.getNomeIngrediente());
                     int affectedRows = preparedStatement.executeUpdate();
@@ -131,27 +132,31 @@ public class receitasDAO {
 
     public List<Receita> exibirTodasReceitas() {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
+                PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
+                ResultSet resultSet = preparedStatement.executeQuery()) {
+    
             System.out.println("Conexão bem-sucedida");
-
+    
             List<Receita> recipes = new ArrayList<>();
-
+    
             while (resultSet.next()) {
+                int idReceita = resultSet.getInt("idReceita");
                 String recipeName = resultSet.getString("titulo");
                 String recipePreparement = resultSet.getString("modoPreparo");
                 String userName = resultSet.getString("usuario");
-
+    
                 Usuario usuario = new Usuario(userName);
-                Receita receita = new Receita(recipeName, recipePreparement, usuario);
+    
+                String caminhoImagem = getImagemByReceitaId(idReceita);
+    
+                Receita receita = new Receita(idReceita, recipeName, recipePreparement, usuario, null, null, caminhoImagem);
                 recipes.add(receita);
             }
-
+    
             System.out.println("Seleção de todas as receitas bem-sucedida");
-
+    
             return recipes;
-
+    
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Falha na conexão com o banco de dados");
@@ -161,7 +166,7 @@ public class receitasDAO {
 
     public static List<Receita> obterReceitasDoUsuarioPorId(int idUsuario) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITAS_DO_USUARIO_POR_ID)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITAS_DO_USUARIO_POR_ID)) {
     
             preparedStatement.setInt(1, idUsuario);
     
@@ -173,10 +178,14 @@ public class receitasDAO {
                     String nomeReceita = resultSet.getString("titulo");
                     String modoPreparo = resultSet.getString("modoPreparo");
     
-                    Usuario usuario = new Usuario(); 
+                    Usuario usuario = new Usuario();
                     usuario.setIdUsuario(idUsuario);
-
+    
                     Receita receita = new Receita(idReceita, nomeReceita, modoPreparo, usuario);
+    
+                    String caminhoImagem = getImagemByReceitaId(idReceita);
+                    receita.setCaminhoImagem(caminhoImagem);
+    
                     receitasDoUsuario.add(receita);
                 }
     
@@ -195,18 +204,18 @@ public class receitasDAO {
         }
     }
 
-    //Precisa de alterações
+    // Precisa de alterações
     public List<ImagemReceita> exibirImagem() {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_IMAGEM);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+                PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_IMAGEM);
+                ResultSet resultSet = preparedStatement.executeQuery()) {
 
             System.out.println("Conexão bem-sucedida");
 
             List<ImagemReceita> imgArray = new ArrayList<>();
 
             while (resultSet.next()) {
-                //int imgID = resultSet.getInt("idImagem");
+                // int imgID = resultSet.getInt("idImagem");
                 String imgFile = resultSet.getString("imagem");
 
                 ImagemReceita img = new ImagemReceita(imgFile);
@@ -226,10 +235,11 @@ public class receitasDAO {
 
     public void deletarReceitaPorId(int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(DELETAR_RECEITA)) {
+                PreparedStatement deleteReceitaStatement = connection
+                        .prepareStatement("DELETE FROM Receitas WHERE IDRECEITA = ?")) {
 
-            preparedStatement.setInt(1, idReceita);
-            int affectedRows = preparedStatement.executeUpdate();
+            deleteReceitaStatement.setInt(1, idReceita);
+            int affectedRows = deleteReceitaStatement.executeUpdate();
 
             if (affectedRows > 0) {
                 System.out.println("Receita excluída com sucesso, ID: " + idReceita);
@@ -245,7 +255,7 @@ public class receitasDAO {
 
     public static void atualizarReceita(Receita receita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(ATUALIZAR_RECEITA)) {
 
             preparedStatement.setString(1, receita.getNomeReceita());
             preparedStatement.setString(2, receita.getModoPreparo());
@@ -264,5 +274,102 @@ public class receitasDAO {
             System.out.println("Falha na conexão com o banco de dados");
             System.out.println("Erro: " + e.getMessage());
         }
+    }
+
+    public Receita getReceitaById(int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITA_POR_ID)) {
+
+            preparedStatement.setInt(1, idReceita);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String nomeReceita = resultSet.getString("titulo");
+                    String modoPreparo = resultSet.getString("modoPreparo");
+                    int idUsuario = resultSet.getInt("idUsuario");
+
+                    Usuario usuario = usuariosDAO.getUsuarioById(idUsuario);
+
+                    List<Ingrediente> ingredientes = getIngredientesByReceitaId(idReceita);
+                    String urlVideo = getVideoReceitaUrlById(idReceita);
+                    String caminhoImagem = getImagemByReceitaId(idReceita);
+
+                    System.out.println("IMAGEM: " + caminhoImagem);
+
+                    return new Receita(idReceita, nomeReceita, modoPreparo, usuario, ingredientes, urlVideo, caminhoImagem);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+        }
+
+        return null;
+    }
+
+    private List<Ingrediente> getIngredientesByReceitaId(int idReceita) {
+        List<Ingrediente> ingredientes = new ArrayList<>();
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_INGREDIENTES_POR_RECEITA_ID)) {
+
+            preparedStatement.setInt(1, idReceita);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int idIngrediente = resultSet.getInt("idIngrediente");
+                    String nomeIngrediente = resultSet.getString("nomeIngrediente");
+
+                    ingredientes.add(new Ingrediente(idIngrediente, nomeIngrediente));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na recuperação dos ingredientes");
+        }
+
+        return ingredientes;
+    }
+
+    public String getVideoReceitaUrlById(int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_URL_VIDEO_POR_RECEITA_ID)) {
+    
+            preparedStatement.setInt(1, idReceita);
+    
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("urlVideo");
+                }
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+        }
+    
+        return null;
+    }
+
+    public static String getImagemByReceitaId(int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?")) {
+    
+            preparedStatement.setInt(1, idReceita);
+    
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("IMAGEM");
+                }
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+        }
+    
+        return null;
     }
 }

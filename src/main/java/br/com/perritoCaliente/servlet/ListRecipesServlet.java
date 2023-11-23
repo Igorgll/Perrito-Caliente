@@ -18,9 +18,11 @@ import java.util.List;
 public class ListRecipesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
 
         List<Receita> receitas = new receitasDAO().exibirTodasReceitas();
         for (Receita receita : receitas) {
+            int idReceita = receita.getIdReceita();
             int idUsuario = receita.getIdUsuario();
             Usuario usuario = usuariosDAO.getUsuarioById(idUsuario);
             
@@ -29,6 +31,7 @@ public class ListRecipesServlet extends HttpServlet {
             } else {
                 System.out.println("Nenhum usuário encontrado para o ID: " + idUsuario);
             }
+            System.out.println("ID da Receita: " + idReceita);
         }
 
         req.setAttribute("receitas", receitas);

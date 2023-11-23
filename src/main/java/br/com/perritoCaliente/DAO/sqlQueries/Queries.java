@@ -27,6 +27,12 @@ public class Queries {
     "FROM Receitas r " +
     "WHERE r.idUsuario = ?";
 
+    public static final String OBTER_RECEITA_POR_ID = "SELECT * FROM Receitas WHERE IDRECEITA = ?";
+
+    public static final String OBTER_INGREDIENTES_POR_RECEITA_ID = "SELECT * FROM Ingredientes WHERE IDRECEITA = ?";
+
+    public static final String OBTER_URL_VIDEO_POR_RECEITA_ID = "SELECT urlVideo FROM Videos WHERE IDRECEITA = ?";
+
     //CATEGORIAS
     public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";
 
@@ -42,5 +48,8 @@ public class Queries {
     public static final String DELETAR_USUARIO = "DELETE Usuario WHERE idUsuario = ?";
 
     public static final String DELETAR_RECEITA = "DELETE Receitas WHERE idReceita = ?";
+
+    public static final String DELETAR_INGREDIENTES_POR_RECEITA = "DELETE FROM RECEITAS WHERE IDRECEITA = ?";
+    
     public static final String ATUALIZAR_RECEITA = "UPDATE Receitas SET titulo = ?, modoPreparo = ? WHERE idReceita = ?";
 }

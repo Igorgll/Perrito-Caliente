@@ -1,11 +1,19 @@
 package br.com.perritoCaliente.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Receita {
     private int idReceita;
     private String nomeReceita;
     private String modoPreparo;
     private int idUsuario;
     private Usuario usuario;
+    private List<Ingrediente> ingredientes = new ArrayList<>();
+    private String urlVideo;
+    private String caminhoImagem;
+
+    public Receita(){}
 
     public Receita(String nomeReceita, String modoPreparo) {
         this.nomeReceita = nomeReceita;
@@ -29,6 +37,17 @@ public class Receita {
         this.nomeReceita = nomeReceita;
         this.modoPreparo = modoPreparo;
         this.usuario = usuario;
+    }
+
+    public Receita(int idReceita, String nomeReceita, String modoPreparo, Usuario usuario,
+            List<Ingrediente> ingredientes, String urlVideo, String caminhoImagem) {
+        this.idReceita = idReceita;
+        this.nomeReceita = nomeReceita;
+        this.modoPreparo = modoPreparo;
+        this.usuario = usuario;
+        this.ingredientes = ingredientes;
+        this.urlVideo = urlVideo;
+        this.caminhoImagem = caminhoImagem;
     }
 
     public String getModoPreparo() {
@@ -71,4 +90,30 @@ public class Receita {
         this.usuario = usuario;
     }
 
+    public List<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(List<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    public void setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
+    }
+
+    public String getCaminhoImagem() {
+        return caminhoImagem;
+    }
+
+    public void setCaminhoImagem(String caminhoImagem) {
+        this.caminhoImagem = caminhoImagem;
+    }
+ 
+    
+    
 }

@@ -160,7 +160,8 @@
               </div>
               <div class="my-recipes-content">
                 <c:if test="${not empty receitasDoUsuario}">
-                <c:forEach var="receita" items="${receitasDoUsuario}">
+                  <c:forEach var="receita" items="${receitasDoUsuario}">
+                  <a style="text-decoration: none; color: inherit;" href="recipe-description?idReceita=${receita.idReceita}">
                 <div class="custom-recipe__card" style="max-width: 400px">
                     <div class="custom-card__background">
                       <div class="custom-card__profile">
@@ -181,20 +182,28 @@
                         </div>
                       </div>
                       <img
-                        src="./styles/assets/cuzcuz.png"
-                        alt="Image do Cuzcuz Paulista"
+                        style="border-top-right-radius: 10px; border-top-left-radius: 10px;"
+                        src="${receita.caminhoImagem}"
+                        alt="Image da Receita"
                       />
                     </div>
                     <div class="custom-card__description">
                             <p>${receita.getNomeReceita()}</p>
                         <div class="custom-card__buttons">
-                            <button>Editar</button>
-                            <button>Excluir</button>
+                        <button>Editar</button> <!--Tem que adicionar um link ao inves de um botão que redireciona para uma pagina contendo um form de edição-->
+                        <form  action="delete-recipe" method="POST">
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="idReceita" value="${receita.getIdReceita()}">
+                          <button style="margin: 0; width: 100%; height: 100%; border: none; color: #FFFFFF; background-color: red; transition: none;" type="submit">
+                            Excluir
+                          </button>
+                        </form>
                         </div>
                     </div>
                   </div>
+                </a>
                 </c:forEach>
-              </c:if>  
+              </c:if>
               </div>
               </div>
             </div>

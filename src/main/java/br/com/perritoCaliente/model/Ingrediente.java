@@ -2,7 +2,6 @@ package br.com.perritoCaliente.model;
 
 public class Ingrediente {
 
-
     private int idIngrediente;
     private String nomeIngrediente;
 
