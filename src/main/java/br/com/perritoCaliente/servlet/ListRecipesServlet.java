@@ -1,7 +1,10 @@
 package br.com.perritoCaliente.servlet;
 
 import br.com.perritoCaliente.DAO.receitasDAO;
+import br.com.perritoCaliente.DAO.usuariosDAO;
+import br.com.perritoCaliente.model.ImagemReceita;
 import br.com.perritoCaliente.model.Receita;
+import br.com.perritoCaliente.model.Usuario;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +20,19 @@ public class ListRecipesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         List<Receita> receitas = new receitasDAO().exibirTodasReceitas();
+        for (Receita receita : receitas) {
+            int idUsuario = receita.getIdUsuario();
+            Usuario usuario = usuariosDAO.getUsuarioById(idUsuario);
+            
+            if (usuario != null) {
+                receita.setUsuario(usuario);
+            } else {
+                System.out.println("Nenhum usuário encontrado para o ID: " + idUsuario);
+            }
+        }
+
         req.setAttribute("receitas", receitas);
-        req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
+        req.getRequestDispatcher("recipes.jsp").forward(req, resp);
 
     }
 

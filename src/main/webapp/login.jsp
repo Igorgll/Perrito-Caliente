@@ -22,19 +22,25 @@
       <nav>
         <a href="index.jsp">
           <div class="logo">
-            <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+            <a href="./index.jsp">
+              <img src="./styles/assets/finalfinakl 4.png" alt="Logo" />
+            </a>
           </div>
         </a>
         <ul class="nav-list" style="margin-bottom: 0;">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+          <a href="/find-all-recipes" style="text-decoration: none; color: inherit"
             ><li>Receitas</li></a
           >
           <li>Sobre nós</li>
           <li>Contato</li>
         </ul>
         <div class="nav-buttons">
-          <button>Cadastre-se</button>
-          <button>Entrar</button>
+          <a href="./signup.jsp" style="text-decoration: none; color: inherit"
+            ><button class="login-btn">Cadastre-se</button></a
+          >
+          <a href="./login.jsp" style="text-decoration: none; color: inherit"
+            ><button class="signup-btn">Entrar</button></a
+          >
         </div>
       </nav>
 
