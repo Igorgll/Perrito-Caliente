@@ -140,12 +140,13 @@ public class receitasDAO {
             List<Receita> recipes = new ArrayList<>();
 
             while (resultSet.next()) {
+                int idReceita = resultSet.getInt("idReceita");
                 String recipeName = resultSet.getString("titulo");
                 String recipePreparement = resultSet.getString("modoPreparo");
                 String userName = resultSet.getString("usuario");
 
                 Usuario usuario = new Usuario(userName);
-                Receita receita = new Receita(recipeName, recipePreparement, usuario);
+                Receita receita = new Receita(idReceita, recipeName, recipePreparement, usuario);
                 recipes.add(receita);
             }
 
@@ -227,17 +228,18 @@ public class receitasDAO {
 
     public void deletarReceitaPorId(int idReceita) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
-             PreparedStatement deleteReceitaStatement = connection.prepareStatement("DELETE FROM Receitas WHERE IDRECEITA = ?")) {
-    
+                PreparedStatement deleteReceitaStatement = connection
+                        .prepareStatement("DELETE FROM Receitas WHERE IDRECEITA = ?")) {
+
             deleteReceitaStatement.setInt(1, idReceita);
             int affectedRows = deleteReceitaStatement.executeUpdate();
-    
+
             if (affectedRows > 0) {
                 System.out.println("Receita excluída com sucesso, ID: " + idReceita);
             } else {
                 System.out.println("Nenhuma receita foi excluída para o ID: " + idReceita);
             }
-    
+
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Falha na conexão com o banco de dados");
@@ -265,5 +267,79 @@ public class receitasDAO {
             System.out.println("Falha na conexão com o banco de dados");
             System.out.println("Erro: " + e.getMessage());
         }
+    }
+
+    public Receita getReceitaById(int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITA_POR_ID)) {
+
+            preparedStatement.setInt(1, idReceita);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String nomeReceita = resultSet.getString("titulo");
+                    String modoPreparo = resultSet.getString("modoPreparo");
+                    int idUsuario = resultSet.getInt("idUsuario");
+
+                    Usuario usuario = usuariosDAO.getUsuarioById(idUsuario);
+
+                    List<Ingrediente> ingredientes = getIngredientesByReceitaId(idReceita);
+                    String urlVideo = getVideoReceitaUrlById(idReceita);
+
+                    return new Receita(idReceita, nomeReceita, modoPreparo, usuario, ingredientes, urlVideo);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+        }
+
+        return null;
+    }
+
+    private List<Ingrediente> getIngredientesByReceitaId(int idReceita) {
+        List<Ingrediente> ingredientes = new ArrayList<>();
+
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_INGREDIENTES_POR_RECEITA_ID)) {
+
+            preparedStatement.setInt(1, idReceita);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    int idIngrediente = resultSet.getInt("idIngrediente");
+                    String nomeIngrediente = resultSet.getString("nomeIngrediente");
+
+                    ingredientes.add(new Ingrediente(idIngrediente, nomeIngrediente));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na recuperação dos ingredientes");
+        }
+
+        return ingredientes;
+    }
+
+    public String getVideoReceitaUrlById(int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(OBTER_URL_VIDEO_POR_RECEITA_ID)) {
+    
+            preparedStatement.setInt(1, idReceita);
+    
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("urlVideo");
+                }
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+        }
+    
+        return null;
     }
 }

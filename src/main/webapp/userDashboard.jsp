@@ -160,7 +160,8 @@
               </div>
               <div class="my-recipes-content">
                 <c:if test="${not empty receitasDoUsuario}">
-                <c:forEach var="receita" items="${receitasDoUsuario}">
+                  <c:forEach var="receita" items="${receitasDoUsuario}">
+                  <a style="text-decoration: none; color: inherit;" href="recipe-description?idReceita=${receita.idReceita}">
                 <div class="custom-recipe__card" style="max-width: 400px">
                     <div class="custom-card__background">
                       <div class="custom-card__profile">
@@ -199,8 +200,9 @@
                         </div>
                     </div>
                   </div>
+                </a>
                 </c:forEach>
-              </c:if>  
+              </c:if>
               </div>
               </div>
             </div>

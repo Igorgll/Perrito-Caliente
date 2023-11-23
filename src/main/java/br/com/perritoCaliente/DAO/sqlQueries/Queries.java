@@ -27,6 +27,12 @@ public class Queries {
     "FROM Receitas r " +
     "WHERE r.idUsuario = ?";
 
+    public static final String OBTER_RECEITA_POR_ID = "SELECT * FROM Receitas WHERE IDRECEITA = ?";
+
+    public static final String OBTER_INGREDIENTES_POR_RECEITA_ID = "SELECT * FROM Ingredientes WHERE IDRECEITA = ?";
+
+    public static final String OBTER_URL_VIDEO_POR_RECEITA_ID = "SELECT urlVideo FROM Videos WHERE IDRECEITA = ?";
+
     //CATEGORIAS
     public static final String LISTAR_CATEGORIA = "SELECT * FROM CategoriasReceitas";
 

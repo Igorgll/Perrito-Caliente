@@ -15,6 +15,8 @@ public class CreateAccountServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
         String usuario = request.getParameter("usuario");

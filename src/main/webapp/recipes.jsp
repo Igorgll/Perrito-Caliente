@@ -46,7 +46,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           </div>
         </a>
         <ul class="nav-list" style="margin-bottom: 0">
-          <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+          <a href="/find-all-recipes" style="text-decoration: none; color: inherit"
             ><li>Receitas</li></a
           >
           <li>Sobre nós</li>
@@ -83,7 +83,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             "
           >
             <a
-              href="./userDashboard.jsp"
+              href="/user-dashboard"
               style="text-decoration: none; color: inherit"
             >
               <span style="color: #000"
@@ -166,6 +166,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             "
           >
             <c:forEach var="receita" items="${receitas}">
+              <a style="text-decoration: none; color: inherit;" href="recipe-description?idReceita=${receita.idReceita}">
               <li class="recipe__card">
                 <div class="card__background">
                   <div class="card__profile">
@@ -194,6 +195,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                   <p>${receita.getNomeReceita()}</p>
                 </div>
               </li>
+            </a>
             </c:forEach>
           </ul>
         </div>
