@@ -36,7 +36,7 @@ import="javax.servlet.http.HttpSession" %>
           </div>
         </a>
           <ul class="nav-list" style="margin-bottom: 0;">
-            <a href="./recipes.jsp" style="text-decoration: none; color: inherit"
+            <a href="/find-all-recipes" style="text-decoration: none; color: inherit"
               ><li>Receitas</li></a
             >
             <li>Sobre nós</li>
@@ -72,7 +72,7 @@ import="javax.servlet.http.HttpSession" %>
               gap: 20px;
             "
           >
-          <a href="./userDashboard.jsp" style="text-decoration: none; color: inherit">
+          <a href="/user-dashboard" style="text-decoration: none; color: inherit">
             <span style="color: #000"
               >Bem-vindo, <%= usuarioLogado.getNome() %></span
             >
@@ -387,7 +387,7 @@ import="javax.servlet.http.HttpSession" %>
         </section>
 
         <div class="see-all__recipes">
-          <a href="./recipes.jsp"><button>Veja todas as receitas</button></a>
+          <a href="/find-all-recipes"><button>Veja todas as receitas</button></a>
         </div>
       </div>
       <footer>
