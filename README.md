@@ -18,11 +18,11 @@
 ### 📝 Funcionalidades
 
 - [] Pesquisar receitas
-- [] Postar receitas
+- [x] Postar receitas
 - [] Atualizar receitas
-- [] Excluir receitas
+- [x] Excluir receitas
 - [] Avaliar receitas
-- [] Adicionar vídeo do youtube da receita
+- [x] Adicionar vídeo do youtube da receita
 - [x] Criar conta
 - [x] Fazer Login
 

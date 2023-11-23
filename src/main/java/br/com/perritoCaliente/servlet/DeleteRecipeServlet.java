@@ -22,7 +22,7 @@ public class DeleteRecipeServlet extends HttpServlet {
 
             new receitasDAO().deletarReceitaPorId(recipeIdInt);
 
-            resp.sendRedirect("/find-all-recipes");
+            resp.sendRedirect("/user-dashboard");
         } else {
             System.out.println("Método não permitido.");
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Método não permitido");

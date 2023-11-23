@@ -187,8 +187,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                     </div>
                   </div>
                   <img
-                    src="./styles/assets/cuzcuz.png"
-                    alt="Image do Cuzcuz Paulista"
+                  style="border-top-right-radius: 10px; border-top-left-radius: 10px;"
+                  src="${receita.caminhoImagem}"
+                  alt="Foto da Receita"
                   />
                 </div>
                 <div class="card__description">

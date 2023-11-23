@@ -182,8 +182,9 @@
                         </div>
                       </div>
                       <img
-                        src="./styles/assets/cuzcuz.png"
-                        alt="Image do Cuzcuz Paulista"
+                        style="border-top-right-radius: 10px; border-top-left-radius: 10px;"
+                        src="${receita.caminhoImagem}"
+                        alt="Image da Receita"
                       />
                     </div>
                     <div class="custom-card__description">

@@ -166,7 +166,7 @@
                     </div>
                     <div class="description-image">
                         <div class="description-image-wrapper">
-                        <img src="./styles/assets/cachorro_quente_gourmet.jpg" alt="Foto de cachorro quente">
+                        <img src="<%= receita.getCaminhoImagem() %>" alt="Foto da receita">
                         <div class="recipe-user-info">
                             <div class="recipe-user-profile">
                                 <div class="recipe-user-profile-pic">

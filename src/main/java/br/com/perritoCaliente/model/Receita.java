@@ -11,6 +11,7 @@ public class Receita {
     private Usuario usuario;
     private List<Ingrediente> ingredientes = new ArrayList<>();
     private String urlVideo;
+    private String caminhoImagem;
 
     public Receita(){}
 
@@ -39,13 +40,14 @@ public class Receita {
     }
 
     public Receita(int idReceita, String nomeReceita, String modoPreparo, Usuario usuario,
-            List<Ingrediente> ingredientes, String urlVideo) {
+            List<Ingrediente> ingredientes, String urlVideo, String caminhoImagem) {
         this.idReceita = idReceita;
         this.nomeReceita = nomeReceita;
         this.modoPreparo = modoPreparo;
         this.usuario = usuario;
         this.ingredientes = ingredientes;
         this.urlVideo = urlVideo;
+        this.caminhoImagem = caminhoImagem;
     }
 
     public String getModoPreparo() {
@@ -103,5 +105,15 @@ public class Receita {
     public void setUrlVideo(String urlVideo) {
         this.urlVideo = urlVideo;
     }
+
+    public String getCaminhoImagem() {
+        return caminhoImagem;
+    }
+
+    public void setCaminhoImagem(String caminhoImagem) {
+        this.caminhoImagem = caminhoImagem;
+    }
+ 
+    
     
 }

@@ -134,26 +134,29 @@ public class receitasDAO {
         try (Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(LISTAR_RECEITAS);
                 ResultSet resultSet = preparedStatement.executeQuery()) {
-
+    
             System.out.println("Conexão bem-sucedida");
-
+    
             List<Receita> recipes = new ArrayList<>();
-
+    
             while (resultSet.next()) {
                 int idReceita = resultSet.getInt("idReceita");
                 String recipeName = resultSet.getString("titulo");
                 String recipePreparement = resultSet.getString("modoPreparo");
                 String userName = resultSet.getString("usuario");
-
+    
                 Usuario usuario = new Usuario(userName);
-                Receita receita = new Receita(idReceita, recipeName, recipePreparement, usuario);
+    
+                String caminhoImagem = getImagemByReceitaId(idReceita);
+    
+                Receita receita = new Receita(idReceita, recipeName, recipePreparement, usuario, null, null, caminhoImagem);
                 recipes.add(receita);
             }
-
+    
             System.out.println("Seleção de todas as receitas bem-sucedida");
-
+    
             return recipes;
-
+    
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Falha na conexão com o banco de dados");
@@ -164,32 +167,36 @@ public class receitasDAO {
     public static List<Receita> obterReceitasDoUsuarioPorId(int idUsuario) {
         try (Connection connection = ConnectionPoolConfig.getConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(OBTER_RECEITAS_DO_USUARIO_POR_ID)) {
-
+    
             preparedStatement.setInt(1, idUsuario);
-
+    
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 List<Receita> receitasDoUsuario = new ArrayList<>();
-
+    
                 while (resultSet.next()) {
                     int idReceita = resultSet.getInt("idReceita");
                     String nomeReceita = resultSet.getString("titulo");
                     String modoPreparo = resultSet.getString("modoPreparo");
-
+    
                     Usuario usuario = new Usuario();
                     usuario.setIdUsuario(idUsuario);
-
+    
                     Receita receita = new Receita(idReceita, nomeReceita, modoPreparo, usuario);
+    
+                    String caminhoImagem = getImagemByReceitaId(idReceita);
+                    receita.setCaminhoImagem(caminhoImagem);
+    
                     receitasDoUsuario.add(receita);
                 }
-
+    
                 return receitasDoUsuario;
-
+    
             } catch (SQLException e) {
                 e.printStackTrace();
                 System.out.println("Falha ao obter receitas do usuário por ID: " + e.getMessage());
                 return Collections.emptyList();
             }
-
+    
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Falha na conexão com o banco de dados");
@@ -285,8 +292,11 @@ public class receitasDAO {
 
                     List<Ingrediente> ingredientes = getIngredientesByReceitaId(idReceita);
                     String urlVideo = getVideoReceitaUrlById(idReceita);
+                    String caminhoImagem = getImagemByReceitaId(idReceita);
 
-                    return new Receita(idReceita, nomeReceita, modoPreparo, usuario, ingredientes, urlVideo);
+                    System.out.println("IMAGEM: " + caminhoImagem);
+
+                    return new Receita(idReceita, nomeReceita, modoPreparo, usuario, ingredientes, urlVideo, caminhoImagem);
                 }
             }
 
@@ -332,6 +342,26 @@ public class receitasDAO {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     return resultSet.getString("urlVideo");
+                }
+            }
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Falha na conexão com o banco de dados");
+        }
+    
+        return null;
+    }
+
+    public static String getImagemByReceitaId(int idReceita) {
+        try (Connection connection = ConnectionPoolConfig.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM IMAGENSRECEITAS WHERE IDRECEITA = ?")) {
+    
+            preparedStatement.setInt(1, idReceita);
+    
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("IMAGEM");
                 }
             }
     
