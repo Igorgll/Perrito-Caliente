@@ -161,8 +161,8 @@
               <div class="my-recipes-content">
                 <c:if test="${not empty receitasDoUsuario}">
                   <c:forEach var="receita" items="${receitasDoUsuario}">
-                  <!-- <a style="text-decoration: none; color: inherit;" href="recipe-description?idReceita=${receita.idReceita}"> -->
-                <div class="custom-recipe__card" style="max-width: 400px">
+                    <a style="all: unset;" href="recipe-description?idReceita=${receita.idReceita}">
+                    <div class="custom-recipe__card" style="max-width: 400px; cursor: pointer;">
                     <div class="custom-card__background">
                       <div class="custom-card__profile">
                         <div class="custom-card__profile-pic">
@@ -190,8 +190,12 @@
                     <div class="custom-card__description">
                             <p>${receita.getNomeReceita()}</p>
                         <div class="custom-card__buttons">
-                        <button id="edit-btn">Editar</button> <!--Tem que adicionar um link ao inves de um botão que redireciona para uma pagina contendo um form de edição-->
-                        <form  action="delete-recipe" method="POST">
+                          <a href="user-dashboard?editRecipeId=${receita.getIdReceita()}" style="width: 45%; color: white; background: transparent; border: 1px; border-color: var(--orange);">
+                            <button class="edit-btn" id="edit-btn" style="margin: 0; width: 100%; height: 100%; color: var(--orange); width: 100%; transition: all 0.6s;">
+                              Editar
+                            </button>
+                          </a>
+                        <form  action="delete-recipe" method="POST" style="width: 45%;">
                           <input type="hidden" name="_method" value="DELETE">
                           <input type="hidden" name="idReceita" value="${receita.getIdReceita()}">
                           <button style="margin: 0; width: 100%; height: 100%; border: none; color: #FFFFFF; background-color: red; transition: none;" type="submit">
@@ -201,7 +205,7 @@
                         </div>
                     </div>
                   </div>
-                <!-- </a> -->
+                  </a>
                 </c:forEach>
               </c:if>
               </div>
@@ -262,45 +266,59 @@
         </div>
       </div>
 
-      <!-- MODAL DE EDIÇÃO -->
-      <div class="modal fade" id="form-edit-recipe" tabindex="-1" aria-labelledby="form-edit-recipe" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="form-edit-recipe">Editar Receita</h1>
-              <button type="button" class="btn-close" id="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form action="/create-recipe" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                  <label for="exampleInput" class="form-label">Nome da Receita</label>
-                  <input type="text" name="recipe-name" id="recipe-name" value="${param.name}" class="form-control">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
-                  <textarea class="form-control" type="text" placeholder="Digite o modo de preparo" name="recipe-preparation" id="recipe-preparation" rows="5" value="${param.name}" class="form-control"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="ingredientes" class="form-label">Ingredientes</label>
-                  <textarea class="form-control" name="recipe-ingredient" id="recipe-ingredient" value="${param.name}" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
-                  <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
-                  <input type="text" name="recipe-video" id="recipe-video" value="${param.name}" class="form-control">
-                </div>
-                <div class="modal-footer">
-                 <button type="submit" class="btn btn-primary">Editar receita</button>
-                </div>
-              </form>
-            </div>
-
-          </div>
-        </div>
+<!-- MODAL DE EDIÇÃO -->
+<div class="modal fade" id="form-edit-recipe" tabindex="-1" aria-labelledby="form-edit-recipe" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="form-edit-recipe">Editar Receita</h1>
+        <button type="button" class="btn-close" id="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body">
+        <form action="/update-recipe" method="post" enctype="multipart/form-data">
+          <%-- Verifica se há detalhes da receita para edição --%>
+          <c:if test="${not empty receitaParaEdicao}">
+            <div class="mb-3">
+              <label for="exampleInput" class="form-label">Nome da Receita</label>
+              <input type="text" name="recipe-name" id="recipe-name" value="${receitaParaEdicao.nomeReceita}" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
+              <textarea class="form-control" type="text" name="recipe-preparation" id="recipe-preparation" rows="5">${receitaParaEdicao.modoPreparo}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="ingredientes" class="form-label">Ingredientes</label>
+              <textarea class="form-control" name="recipe-ingredient" id="recipe-ingredient" rows="5">
+                <c:forEach var="ingrediente" items="${receitaParaEdicao.ingredientes}" varStatus="loop">
+                  ${ingrediente.nomeIngrediente}
+                  <c:if test="${!loop.last}">, </c:if>
+                </c:forEach>
+              </textarea>
+            </div>
+            <div class="mb-3">
+              <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
+              <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
+              <input type="text" name="recipe-video" id="recipe-video" value="${receitaParaEdicao.urlVideo}" class="form-control">
+            </div>
+          </c:if>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Editar receita</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+    #edit-btn:hover {
+      background: var(--orange) !important;
+      color: white !important;
+    }
+  </style>
 
     </div>
     <script
@@ -309,13 +327,16 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      const btn = document.getElementById("edit-btn");
-      const editForm = new bootstrap.Modal(document.getElementById("form-edit-recipe")); // Cria uma instância de Modal
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.edit-btn').forEach(function (button) {
+          button.addEventListener('click', function (event) {
+            event.preventDefault();
     
-      btn.onclick = () => {
-        editForm.toggle(); // Alterna entre exibir e ocultar o modal
-        console.log("ABRIU");
-      };
+            var editForm = new bootstrap.Modal(document.getElementById('form-edit-recipe'));
+            editForm.show();
+          });
+        });
+      });
     </script>
   </body>
 </html>

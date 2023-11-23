@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.perritoCaliente.DAO.receitasDAO;
+import br.com.perritoCaliente.model.Ingrediente;
 import br.com.perritoCaliente.model.Receita;
 import br.com.perritoCaliente.model.Usuario;
 
@@ -27,6 +28,17 @@ public class userDashboardServlet extends HttpServlet {
         if (usuarioLogado != null) {
             List<Receita> receitasDoUsuario = receitasDAO.obterReceitasDoUsuarioPorId(usuarioLogado.getIdUsuario());
             request.setAttribute("receitasDoUsuario", receitasDoUsuario);
+        }
+
+        
+        String editRecipeIdParam = request.getParameter("editRecipeId");
+        if (editRecipeIdParam != null) {
+            int editRecipeId = Integer.parseInt(editRecipeIdParam);
+            
+            Receita receitaParaEdicao = receitasDAO.getReceitaById(editRecipeId);
+            request.setAttribute("ingredientesDaReceita", receitaParaEdicao.getIngredientes());
+
+            request.setAttribute("receitaParaEdicao", receitaParaEdicao);
         }
 
         request.getRequestDispatcher("userDashboard.jsp").forward(request, response);
