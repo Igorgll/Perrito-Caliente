@@ -131,31 +131,25 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           <% } %>
         </div>
       </nav>
-      <div class="banner" style="height: 390px">
+      <div class="banner" style="height: 450px">
         <h1>Confira todas receitas</h1>
-      </div>
-      <div class="index__content" style="padding: 20px 70px">
         <div class="categories__searchBar">
-          <select name="cars" id="cars" style="color: #7f8899">
-            <option value="" hidden>Selecione uma categoria</option>
-            <option value="Picanha">Picanha</option>
-            <option value="Light">Light</option>
-            <option value="Doces">Doces</option>
-            <option value="Petiscos">Petiscos</option>
-          </select>
-          <div class="search-input_wrapper">
+          <div class="search-input_wrapper" style="margin: auto; width: 705px; margin-top: 20px;">
             <input
               type="text"
               name=""
               id=""
               placeholder="Pesquise uma receita ou igrediente"
             />
-            <button id="search__button" style="height: 45px; width: 200px">
+            <button id="search__button" style="height: 45px; width: 140px">
               Pesquisar
             </button>
           </div>
         </div>
-        <div class="all__recipes">
+      </div>
+      <div class="index__content" style="padding: 20px 70px">
+        <h2 style="font-size: 38px; margin-top: 10px;">Receitas</h2>
+        <div class="all__recipes" style="margin-top: 30px;">
           <ul
             style="
               display: grid;
@@ -228,51 +222,21 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Modo de Preparo</label>
-                  <input type="text" name="recipe-preparation" id="recipe-preparation" value="${param.name}" class="form-control">
+                  <textarea class="form-control" type="text" placeholder="Digite o modo de preparo" name="recipe-preparation" id="recipe-preparation" rows="5" value="${param.name}" class="form-control"></textarea>
                 </div>
                 <div class="mb-3">
                   <label for="ingredientes" class="form-label">Ingredientes</label>
                   <textarea class="form-control" name="recipe-ingredient" id="recipe-ingredient" value="${param.name}" rows="5" placeholder="Digite os ingredientes, um por linha"></textarea>
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Tipo da Receita</label>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected>Tipo</option>
-                    <option value="1">Vegetariana</option>
-                    <option value="2">Vegana</option>
-                    <option value="3">Carne</option>
-                  </select>
-                </div>
-                <div class="mb-3">
                   <label for="inputGroupFile" class="form-label">Imagem da Receita</label>
                   <input type="file" class="form-control" name="image" id="image" aria-describedby="inputGroupFileAddon" accept="image/*">
-                </div>
-                <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
-                </div>
-                <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
-                </div>
-                <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
-                </div>
-                <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
-                </div>
-                <div class="mb-3">
-                  <label for="inputGroupFile" class="form-label">Outras Imagens (opcional)</label>
-                  <input type="file" class="form-control" id="inputGroupFile" aria-describedby="inputGroupFileAddon">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Link do vídeo da receita</label>
                   <input type="text" name="recipe-video" id="recipe-video" value="${param.name}" class="form-control">
                 </div>
                 <div class="modal-footer">
-                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                  <button type="submit" class="btn btn-primary">Postar receita</button>
                 </div>
               </form>

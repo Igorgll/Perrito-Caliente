@@ -28,6 +28,7 @@ public class CreateRecipesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        resp.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
         Map<String, String> parameters = uploadImage(req);
